@@ -1,7 +1,10 @@
+/* eslint-disable */
 <template>
   <h3>
     Showing the deposits history for
-    {{ !!fundDetails ? "the " + fundDetails.name + " Fund." : "all funds." }}
+    {{
+      !!fundDetails ? "the " + fundDetails.fundName + " Fund." : "all funds."
+    }}
   </h3>
   <DepositsTable />
 </template>

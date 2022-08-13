@@ -26,7 +26,7 @@ export default createStore({
       state.fundDetails = fund;
     },
     STORE_FUND(state, fund) {
-      state.funds.push(fund);
+      state.funds[state.funds.length] = fund;
     },
     GET_EXISTING_FUNDS_DATA(state, fundsData) {
       state.fundsNames = fundsData.fundsNames;
@@ -49,11 +49,7 @@ export default createStore({
     getDepositsForFund({ commit }, id) {},
     getWithdrawalsForFund({ commit }, id) {},
     storeFund({ commit }, fund) {
-      FundService.createFund(
-        JSON.stringify({
-          fund: this.fund,
-        })
-      ).then((response) => {
+      FundService.createFund(JSON.stringify(fund)).then((response) => {
         console.log("Status: ", response.data.message);
         commit("STORE_FUND", fund);
       });

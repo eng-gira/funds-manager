@@ -1,7 +1,9 @@
 <template>
   <h3>
     Showing the withdrawals history for
-    {{ !!fundDetails ? "the " + fundDetails.name + " Fund." : "all funds." }}
+    {{
+      !!fundDetails ? "the " + fundDetails.fundName + " Fund." : "all funds."
+    }}
   </h3>
   <WithdrawalsTable />
 </template>

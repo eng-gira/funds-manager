@@ -33,7 +33,7 @@
     <tr v-for="fund in funds" :key="fund.id">
       <td>
         <router-link :to="{ name: 'Fund', query: { fund: fund.id } }">{{
-          fund.name
+          fund.fundName
         }}</router-link>
       </td>
       <td>{{ fund.balance }}</td>

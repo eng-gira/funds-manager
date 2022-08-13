@@ -4,14 +4,14 @@
   <form @submit.prevent="submitForm">
     <h2>Create a Fund</h2>
     <br />
-    <p v-if="nameError" style="color:red">{{ nameError }}</p>
+    <p v-if="fundNameError" style="color:red">{{ fundNameError }}</p>
     <label for="fund-name"><strong>Fund Name:</strong></label>
-    <input id="fund-name" type="text" v-model="name" />
+    <input id="fund-name" type="text" v-model="fundName" />
     <br />
 
-    <p v-if="percentageError" style="color:red">{{ percentageError }}</p>
+    <p v-if="fundPercentageError" style="color:red">{{ fundPercentageError }}</p>
     <label for="percentage"><strong>Percentage (%):</strong></label>
-    <input id="percentage" type="number" v-model="percentage" step="0.01" min="0.01" />
+    <input id="percentage" type="number" v-model="fundPercentage" step="0.01" min="0.01" />
     <br />
 
     <p v-if="sizeError" style="color:red">{{ sizeError }}</p>
@@ -44,13 +44,13 @@ export default {
 
     // schema
     const validations = {
-      name: (value) => {
+      fundName: (value) => {
         if (!!value == false) {
           return "The name field is required.";
         }
         return true;
       },
-      percentage: (value) => {
+      fundPercentage: (value) => {
         if (!!value == false) {
           return "The percentage field is required.";
         }
@@ -79,19 +79,20 @@ export default {
       validationSchema: validations,
     });
 
-    const { value: name, errorMessage: nameError } = useField("name");
-    const { value: percentage, errorMessage: percentageError } =
-      useField("percentage");
+    const { value: fundName, errorMessage: fundNameError } =
+      useField("fundName");
+    const { value: fundPercentage, errorMessage: fundPercentageError } =
+      useField("fundPercentage");
     const { value: size, errorMessage: sizeError } = useField("size");
     const { value: notes, errorMessage: notesError } = useField("notes");
 
     return {
-      name,
-      percentage,
+      fundName,
+      fundPercentage,
       size,
       notes,
-      nameError,
-      percentageError,
+      fundNameError,
+      fundPercentageError,
       sizeError,
       notesError,
     };
@@ -109,16 +110,16 @@ export default {
     submitForm() {
       if (
         this.sizeError ||
-        this.percentageError ||
-        this.nameError ||
+        this.fundPercentageError ||
+        this.fundNameError ||
         this.notesError
       ) {
         console.log("Errors exist.");
         return false;
       }
       let fund = {
-        name: this.name,
-        percentage: this.percentage,
+        fundName: this.fundName,
+        fundPercentage: this.fundPercentage,
         size: this.size,
         notes: this.notes,
       };

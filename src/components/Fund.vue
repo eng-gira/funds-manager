@@ -1,6 +1,7 @@
 <!-- eslint-disable vue/multi-word-component-names -->
 <template>
-  <h1>Fund: {{ fundDetails.name }}</h1>
+  <h1>Fund: {{ fundDetails.fundName }}</h1>
+  <h3>Percentage: {{ fundDetails.fundPercentage }} %</h3>
   <h3>Balance: {{ fundDetails.balance }}</h3>
   <h3>Created On: {{ fundDetails.createdOn }}</h3>
   <h3>Last Deposit: {{ fundDetails.lastDeposit }}</h3>
