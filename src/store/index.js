@@ -18,11 +18,7 @@ export default createStore({
     GET_FUNDS(state, funds) {
       state.funds = funds;
     },
-    GET_FUND_DETAILS(state, id) {
-      /**
-       * @TODO This is a temporary solution to remove.
-       */
-      let fund = state.funds[id - 1];
+    GET_FUND_DETAILS(state, fund) {
       state.fundDetails = fund;
     },
     STORE_FUND(state, fund) {
@@ -32,25 +28,52 @@ export default createStore({
       state.fundsNames = fundsData.fundsNames;
       state.totalPercentages = fundsData.totalPercentages;
     },
+    GET_WITHDRAWALS_HISTORY(state, withdrawals) {
+      state.withdrawals = withdrawals;
+    },
+    GET_FUND_WITHDRAWALS(state, fundWithdrawals) {
+      state.fundWithdrawals = fundWithdrawals;
+    },
+    GET_DEPOSITS_HISTORY(state, deposits) {
+      state.deposits = deposits;
+    },
+    GET_FUND_DEPOSITS(state, fundDeposits) {
+      state.fundDeposits = fundDeposits;
+    },
   },
   actions: {
     async getFunds({ commit }) {
       await FundService.getFunds().then((response) => {
-        console.log("Status: ", response.data);
         commit("GET_FUNDS", response.data);
       });
     },
     getFundDetails({ commit }, id) {
-      /**
-       * @TODO This should send a get request.
-       */
-      commit("GET_FUND_DETAILS", id);
+      FundService.getFund(id).then((response) => {
+        commit("GET_FUND_DETAILS", response.data);
+      });
     },
-    getDepositsForFund({ commit }, id) {},
-    getWithdrawalsForFund({ commit }, id) {},
+    getDepositsHistory({ commit }) {
+      FundService.getDepositsHistory().then((response) => {
+        commit("GET_DEPOSITS_HISTORY", response.data);
+      });
+    },
+    getWithdrawalsHistory({ commit }) {
+      FundService.getWithdrawalsHistory().then((response) => {
+        commit("GET_WITHDRAWALS_HISTORY", response.data);
+      });
+    },
+    getDepositsForFund({ commit }, id) {
+      FundService.getDepositsHistoryForFund(id).then((response) => {
+        commit("GET_FUND_DEPOSITS", response.data);
+      });
+    },
+    getWithdrawalsForFund({ commit }, id) {
+      FundService.getWithdrawalsHistoryForFund(id).then((response) => {
+        commit("GET_FUND_WITHDRAWALS", response.data);
+      });
+    },
     storeFund({ commit }, fund) {
       FundService.createFund(JSON.stringify(fund)).then((response) => {
-        console.log("Status: ", response.data.message);
         commit("STORE_FUND", fund);
       });
     },
@@ -60,8 +83,8 @@ export default createStore({
       let totalPercentages = 0.0;
       for (let i = 0; i < funds.length; i++) {
         fundsNames.push(funds[i].name);
-        console.log(funds[i]); // debug
-        totalPercentages += funds[i].percentage;
+        // console.log(funds[i]); // debug
+        totalPercentages += funds[i].fundPercentage;
       }
       // console.log(totalPercentages); // debug
       commit("GET_EXISTING_FUNDS_DATA", {

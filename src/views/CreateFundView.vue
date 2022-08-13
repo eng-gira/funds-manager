@@ -124,6 +124,7 @@ export default {
         notes: this.notes,
       };
       this.$store.dispatch("storeFund", fund);
+      this.$router.push("/funds");
     },
   },
 };

@@ -8,10 +8,10 @@
       <th>Notes</th>
     </tr>
     <tr v-for="withdrawal in withdrawals" :key="withdrawal.id">
-      <td>{{ withdrawal.fromFund }}</td>
-      <td>{{ withdrawal.reason }}</td>
-      <td>{{ withdrawal.date }}</td>
-      <td>{{ withdrawal.amount }}</td>
+      <td>{{ withdrawal.withdrawnFrom }}</td>
+      <td>{{ withdrawal.withdrawalReason }}</td>
+      <td>{{ withdrawal.createdOn }}</td>
+      <td>{{ withdrawal.withdrawnAmount }}</td>
       <td>{{ withdrawal.notes }}</td>
     </tr>
   </table>
@@ -22,18 +22,16 @@ export default {
   props: {
     fund: {
       type: [String, Number],
-      default: "all",
+      required: true,
     },
   },
   created() {
-    /**
-     * @TODO Implement this.
-     */
-    // if (this.fund == "all") {
-    //   this.$store.dispatch("getWithdrawalsHistory"); // updates state's withdrawals.
-    // } else {
-    //   this.$store.dispatch("getWithdrawalsForFund", this.fund); // updates state's fundWithdrawals.
-    // }
+    if (this.fund == "all") {
+      this.$store.dispatch("getWithdrawalsHistory"); // updates state's withdrawals.
+    } else {
+      console.log("not all");
+      this.$store.dispatch("getWithdrawalsForFund", this.fund); // updates state's fundWithdrawals.
+    }
   },
   computed: {
     withdrawals() {
@@ -58,12 +56,12 @@ export default {
   border: 3px solid black;
   padding-top: 12px;
   padding-bottom: 12px;
-  text-align: left;
+  text-align: center;
   background-color: #d3443a;
   color: white;
 }
 .withdrawals-table td {
-  padding: 100px;
+  padding: 20px;
   padding-left: 100px;
   padding-right: 100px;
   border: 1px solid black;

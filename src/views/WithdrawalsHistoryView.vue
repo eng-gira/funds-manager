@@ -5,7 +5,7 @@
       !!fundDetails ? "the " + fundDetails.fundName + " Fund." : "all funds."
     }}
   </h3>
-  <WithdrawalsTable />
+  <WithdrawalsTable :fund="fund" />
 </template>
 <script>
 import WithdrawalsTable from "@/components/WithdrawalsTable";

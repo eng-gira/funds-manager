@@ -38,13 +38,13 @@ const routes = [
     path: "/deposits-history",
     name: "DepositsHistoryView",
     component: DepositsHistoryView,
-    props: (route) => ({ fund: parseInt(route.query.fund) }),
+    props: (route) => ({ fund: route.query.fund }),
   },
   {
     path: "/withdrawals-history",
     name: "WithdrawalsHistoryView",
     component: WithdrawalsHistoryView,
-    props: (route) => ({ fund: parseInt(route.query.fund) }),
+    props: (route) => ({ fund: route.query.fund }),
   },
   {
     path: "/withdraw",
@@ -56,7 +56,7 @@ const routes = [
     path: "/deposit",
     name: "DepositFormView",
     component: DepositFormView,
-    props: (route) => ({ fund: parseInt(route.query.fund) }),
+    props: (route) => ({ fund: route.query.fund }),
   },
   {
     path: "/fund/create",

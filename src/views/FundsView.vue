@@ -20,6 +20,16 @@
         Create a Fund
       </router-link>
     </h4>
+    <h4 style="display: inline-block; margin-left: 10px">
+      <router-link to="/deposit" style="text-decoration: none">
+        Deposit Funds
+      </router-link>
+    </h4>
+    <h4 style="display: inline-block; margin-left: 10px">
+      <router-link to="/withdraw" style="text-decoration: none">
+        Withdraw Funds
+      </router-link>
+    </h4>
   </div>
   <h3>Total Balance: {{ totalBalance }}</h3>
   <br />
@@ -32,9 +42,14 @@
     </tr>
     <tr v-for="fund in funds" :key="fund.id">
       <td>
-        <router-link :to="{ name: 'Fund', query: { fund: fund.id } }">{{
-          fund.fundName
-        }}</router-link>
+        <router-link
+          :to="{ name: 'Fund', query: { fund: fund.id } }"
+          style="text-decoration: none"
+        >
+          <strong>{{
+            fund.fundName + " (" + fund.fundPercentage + " %)"
+          }}</strong>
+        </router-link>
       </td>
       <td>{{ fund.balance }}</td>
       <td>{{ fund.lastDeposit }}</td>
@@ -80,8 +95,9 @@ th {
   padding-top: 12px;
   padding-bottom: 12px;
   text-align: left;
-  background-color: #050faf;
+  background-color: black;
   color: white;
+  text-align: center;
 }
 td {
   padding: 100px;

@@ -4,14 +4,15 @@
       <th>Source</th>
       <th>Deposited To</th>
       <th>Date</th>
-      <th>Amount</th>
+      <th v-if="fund == 'all'">Amount</th>
+      <th v-else>Deposited to this Fund</th>
       <th>Notes</th>
     </tr>
     <tr v-for="deposit in deposits" :key="deposit.id">
-      <td>{{ deposit.source }}</td>
-      <td>{{ deposit.destination }}</td>
-      <td>{{ deposit.date }}</td>
-      <td>{{ deposit.amount }}</td>
+      <td>{{ deposit.depositSource }}</td>
+      <td>{{ deposit.depositedTo }}</td>
+      <td>{{ deposit.createdOn }}</td>
+      <td>{{ deposit.depositedAmount }}</td>
       <td>{{ deposit.notes }}</td>
     </tr>
   </table>
@@ -22,18 +23,16 @@ export default {
   props: {
     fund: {
       type: [String, Number],
-      default: "all",
+      required: true,
     },
   },
   created() {
-    /**
-     * @TODO Implement this.
-     */
-    // if (this.fund == "all") {
-    //   this.$store.dispatch("getDepositsHistory"); // updates state's deposits.
-    // } else {
-    //   this.$store.dispatch("getDepositsForFund", this.fund); // updates state's fundDeposits.
-    // }
+    if (this.fund == "all") {
+      this.$store.dispatch("getDepositsHistory"); // updates state's deposits.
+    } else {
+      console.log("not all but ", this.fund);
+      this.$store.dispatch("getDepositsForFund", this.fund); // updates state's fundDeposits.
+    }
   },
   computed: {
     deposits() {
@@ -58,12 +57,12 @@ export default {
   border: 3px solid black;
   padding-top: 12px;
   padding-bottom: 12px;
-  text-align: left;
+  text-align: center;
   background-color: #04aa6d;
   color: white;
 }
 .deposits-table td {
-  padding: 100px;
+  padding: 20px;
   padding-left: 100px;
   padding-right: 100px;
   border: 1px solid black;

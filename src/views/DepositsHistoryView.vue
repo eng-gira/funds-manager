@@ -6,7 +6,7 @@
       !!fundDetails ? "the " + fundDetails.fundName + " Fund." : "all funds."
     }}
   </h3>
-  <DepositsTable />
+  <DepositsTable :fund="fund" />
 </template>
 <script>
 import DepositsTable from "@/components/DepositsTable.vue";
@@ -22,6 +22,7 @@ export default {
   },
   created() {
     if (this.fund != "all") {
+      console.log("not all from dep. hist. view.");
       this.$store.dispatch("getFundDetails", this.fund);
     }
   },
