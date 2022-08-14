@@ -9,4 +9,4 @@ This is a Vue JS project for the frontend of my funds-manager application. It wa
     - Vue Router
     - Vue CLI
 
-You can visit it on https://www.funds-manager.onrender.com
+You can visit it on https://funds-manager.onrender.com
