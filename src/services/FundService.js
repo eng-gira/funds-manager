@@ -33,4 +33,16 @@ export default {
   getWithdrawalsHistoryForFund(id) {
     return apiClient.get("/getWithdrawalsHistory/" + id);
   },
+  setFundName(data) {
+    return apiClient.post("/setFundName/", data);
+  },
+  setFundPercentage(data) {
+    return apiClient.post("/setFundPercentage/", data);
+  },
+  setSize(data) {
+    return apiClient.post("/setSize/", data);
+  },
+  setFundNotes(data) {
+    return apiClient.post("/setNotes/", data);
+  },
 };

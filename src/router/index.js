@@ -1,5 +1,4 @@
 import { createRouter, createWebHistory } from "vue-router";
-import HomeView from "../views/HomeView.vue";
 import FundsView from "@/views/FundsView.vue";
 import FundView from "@/views/FundView.vue";
 import DepositsHistoryView from "@/views/DepositsHistoryView.vue";
@@ -7,13 +6,9 @@ import WithdrawalsHistoryView from "@/views/WithdrawalsHistoryView.vue";
 import WithdrawalFormView from "@/views/WithdrawalFormView.vue";
 import DepositFormView from "@/views/DepositFormView.vue";
 import CreateFundView from "@/views/CreateFundView.vue";
+import UpdateFundFormView from "@/views/UpdateFundFormView.vue";
 
 const routes = [
-  {
-    path: "/",
-    name: "home",
-    component: HomeView,
-  },
   {
     path: "/about",
     name: "about",
@@ -62,6 +57,12 @@ const routes = [
     path: "/fund/create",
     name: "CreateFundView",
     component: CreateFundView,
+  },
+  {
+    path: "/fund/update",
+    name: "UpdateFundFormView",
+    component: UpdateFundFormView,
+    props: (route) => ({ fund: parseInt(route.query.fund) }),
   },
 ];
 

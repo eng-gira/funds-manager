@@ -48,11 +48,13 @@ export default {
         if (!!value == false) {
           return "The name field is required.";
         }
+        let fundsNames = store.state.funds.map((fund) => fund.fundName);
+        if (fundsNames.includes(value)) return "This name already exists.";
         return true;
       },
       fundPercentage: (value) => {
         if (!!value == false) {
-          return "The percentage field is required.";
+          return "The percentage field is required and has to be greater than 0.00";
         }
         let totalPercentages = store.state.totalPercentages;
         console.log(totalPercentages, " is total %");

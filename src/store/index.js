@@ -11,7 +11,7 @@ export default createStore({
     fundWithdrawals: [],
     fundDetails: {},
     totalPercentages: 0,
-    fundsNames: [],
+    // fundsNames: [],
   },
   getters: {},
   mutations: {
@@ -25,7 +25,7 @@ export default createStore({
       state.funds[state.funds.length] = fund;
     },
     GET_EXISTING_FUNDS_DATA(state, fundsData) {
-      state.fundsNames = fundsData.fundsNames;
+      // state.fundsNames = fundsData.fundsNames;
       state.totalPercentages = fundsData.totalPercentages;
     },
     GET_WITHDRAWALS_HISTORY(state, withdrawals) {
@@ -79,16 +79,16 @@ export default createStore({
     },
     getExistingFundsData({ commit }) {
       let funds = this.state.funds;
-      let fundsNames = [];
+      // let fundsNames = [];
       let totalPercentages = 0.0;
       for (let i = 0; i < funds.length; i++) {
-        fundsNames.push(funds[i].name);
+        // fundsNames.push(funds[i].name);
         // console.log(funds[i]); // debug
         totalPercentages += funds[i].fundPercentage;
       }
       // console.log(totalPercentages); // debug
       commit("GET_EXISTING_FUNDS_DATA", {
-        fundsNames: fundsNames,
+        // fundsNames: fundsNames,
         totalPercentages: totalPercentages,
       });
     },

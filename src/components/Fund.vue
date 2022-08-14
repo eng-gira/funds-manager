@@ -2,12 +2,19 @@
 <template>
   <div class="container">
     <h1>Fund: {{ fundDetails.fundName }}</h1>
-    <h5><router-link to="/">Edit</router-link></h5>
+    <h5>
+      <router-link
+        :to="{ name: 'UpdateFundFormView', query: { fund: fundDetails.id } }"
+        >Edit</router-link
+      >
+    </h5>
     <h3>Percentage: {{ fundDetails.fundPercentage }} %</h3>
     <h3>Balance: {{ fundDetails.balance }}</h3>
     <h3>Created On: {{ fundDetails.createdOn }}</h3>
     <h3>Last Deposit: {{ fundDetails.lastDeposit }}</h3>
     <h3>Last Withdrawal: {{ fundDetails.lastWithdrawal }}</h3>
+    <h4>Notes: {{ fundDetails.notes }}</h4>
+    <br />
     <div class="options">
       <h3>
         <router-link

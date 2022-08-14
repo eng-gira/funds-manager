@@ -1,6 +1,5 @@
 <template>
   <nav>
-    <router-link to="/">Home</router-link> |
     <router-link to="/funds">Funds</router-link> |
     <router-link to="/about">About</router-link>
   </nav>
@@ -121,6 +120,73 @@ nav a.router-link-exact-active {
 @media (min-width: 768px) {
   .button-40 {
     padding: 0.75rem 1.5rem;
+  }
+  .button-20 {
+    appearance: button;
+    background-color: #4d4ae8;
+    background-image: linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.15),
+      rgba(255, 255, 255, 0)
+    );
+    border: 1px solid #4d4ae8;
+    border-radius: 1rem;
+    box-shadow: rgba(255, 255, 255, 0.15) 0 1px 0 inset,
+      rgba(46, 54, 80, 0.075) 0 1px 1px;
+    box-sizing: border-box;
+    color: #ffff;
+    cursor: pointer;
+    display: inline-block;
+    font-family: Inter, sans-serif;
+    font-size: 1rem;
+    font-weight: 500;
+    line-height: 1.5;
+    margin: 0;
+    padding: 0.5rem 1rem;
+    text-align: center;
+    text-transform: none;
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
+      border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    vertical-align: middle;
+  }
+
+  .button-20:focus:not(:focus-visible),
+  .button-20:focus {
+    outline: 0;
+  }
+
+  .button-20:hover {
+    background-color: #3733e5;
+    border-color: #3733e5;
+  }
+
+  .button-20:focus {
+    background-color: #413fc5;
+    border-color: #3e3bba;
+    box-shadow: rgba(255, 255, 255, 0.15) 0 1px 0 inset,
+      rgba(46, 54, 80, 0.075) 0 1px 1px, rgba(104, 101, 235, 0.5) 0 0 0 0.2rem;
+  }
+
+  .button-20:active {
+    background-color: #3e3bba;
+    background-image: none;
+    border-color: #3a38ae;
+    box-shadow: rgba(46, 54, 80, 0.125) 0 3px 5px inset;
+  }
+
+  .button-20:active:focus {
+    box-shadow: rgba(46, 54, 80, 0.125) 0 3px 5px inset,
+      rgba(104, 101, 235, 0.5) 0 0 0 0.2rem;
+  }
+
+  .button-20:disabled {
+    background-image: none;
+    box-shadow: none;
+    opacity: 0.65;
+    pointer-events: none;
   }
 }
 </style>
