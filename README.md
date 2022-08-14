@@ -1,29 +1,12 @@
 # funds-manager
 
-## Project setup
-```
-npm install
-```
+## Description
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+This is a Vue JS project for the frontend of my funds-manager application. It was built mainly using the following: 
+- Vue JS
+    - Vuex
+    - Composition API.
+    - Vue Router
+    - Vue CLI
 
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Run your unit tests
-```
-npm run test:unit
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+You can visit it on https://www.funds-manager.onrender.com
