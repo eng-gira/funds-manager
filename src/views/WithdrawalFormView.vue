@@ -121,7 +121,7 @@ export default {
         notes: this.notes,
       };
       FundService.withdraw(JSON.stringify(withdrawal)).then(() => {
-        // this.$router.push("/funds");
+        this.$router.push("/funds");
       });
     },
   },
