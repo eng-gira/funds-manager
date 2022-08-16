@@ -7,6 +7,7 @@ import WithdrawalFormView from "@/views/WithdrawalFormView.vue";
 import DepositFormView from "@/views/DepositFormView.vue";
 import CreateFundView from "@/views/CreateFundView.vue";
 import UpdateFundFormView from "@/views/UpdateFundFormView.vue";
+import NotFoundView from "@/views/NotFoundView.vue";
 
 const routes = [
   {
@@ -63,6 +64,15 @@ const routes = [
     name: "UpdateFundFormView",
     component: UpdateFundFormView,
     props: (route) => ({ fund: parseInt(route.query.fund) }),
+  },
+  {
+    path: "/",
+    redirect: { name: "Funds" },
+  },
+  {
+    path: "/:catchAll(.*)",
+    name: "NotFoundView",
+    component: NotFoundView,
   },
 ];
 
