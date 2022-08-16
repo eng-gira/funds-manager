@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const apiClient = axios.create({
-  baseURL: "http://localhost/funds-manager-backend/api/Fund",
+  baseURL: "https://funds-manager-backend.herokuapp.com/",
   withCredentials: false,
 });
 
