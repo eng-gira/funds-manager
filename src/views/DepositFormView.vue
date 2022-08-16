@@ -13,7 +13,7 @@
     <label for="deposited-to"><strong>Deposited To:</strong></label>
     <select id="deposited-to" v-model="depositedTo">
       <option disabled selected value> -- Select an Option -- </option>
-      <option value="all">All</option>
+      <option value="all">All (Distributed by percentage)</option>
       <option v-for="fund in funds" :key="fund.id" :value="fund.id">
         {{ fund.fundName }}
       </option>
