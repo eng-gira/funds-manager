@@ -13,10 +13,11 @@ This is a Vue JS project for the frontend of my funds-manager application. It wa
     - Vue Router
     - Vue CLI
 
-You can visit it on https://funds-manager.onrender.com
-
 ### Install
 Run `npm install`
 
 ### Run Dev Environment
 Run `npm run serve`
+
+### Link
+You can visit it at https://funds-manager.onrender.com
