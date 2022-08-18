@@ -1,8 +1,10 @@
 <template>
   <nav>
-    <h3><router-link to="/funds">Funds</router-link></h3>
-    |
-    <h3><router-link to="/about">About</router-link></h3>
+    <h3>
+      <router-link to="/funds">Funds</router-link>
+      |
+      <router-link to="/about">About</router-link>
+    </h3>
   </nav>
   <router-view />
 </template>
