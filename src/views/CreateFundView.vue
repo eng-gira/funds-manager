@@ -11,7 +11,7 @@
 
     <p v-if="fundPercentageError" style="color:red">{{ fundPercentageError }}</p>
     <label for="percentage"><strong>Percentage (%):</strong></label>
-    <input id="percentage" type="number" v-model="fundPercentage" step="0.01" min="0.01" />
+    <input id="percentage" type="number" v-model="fundPercentage" step="0.01" min="0" />
     <br />
 
     <p v-if="sizeError" style="color:red">{{ sizeError }}</p>
@@ -53,8 +53,8 @@ export default {
         return true;
       },
       fundPercentage: (value) => {
-        if (!!value == false) {
-          return "The percentage field is required and has to be greater than 0.00";
+        if (!!value == false && value != 0) {
+          return "The percentage field is required";
         }
         let totalPercentages = store.state.totalPercentages;
         console.log(totalPercentages, " is total %");

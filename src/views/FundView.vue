@@ -43,11 +43,11 @@
       <!-- Left Col -->
       <div class="flex flex-col space-y-3">
         <div class="flex items-center">
-          <h1 class="uppercase text-[8px] text-gray-500 mr-3">Created</h1>
+          <h1 class="uppercase lg:text-[10px] text-[8px] text-gray-500 mr-3">Created</h1>
           <h1 class="font-bold text-[8px] lg:text-sm">{{ fundDetails.createdOn }}</h1>
         </div>
         <div class="flex items-center">
-          <h1 class="uppercase text-[8px] text-gray-500 mr-3">Last Modified</h1>
+          <h1 class="uppercase lg:text-[10px] text-[8px] text-gray-500 mr-3">Last Modified</h1>
           <h1 class="font-bold text-[8px] lg:text-sm">{{ fundDetails.updatedOn }}</h1>
         </div>
       </div>
@@ -55,11 +55,11 @@
       <!-- Left Col -->
       <div class="flex flex-col space-y-3">
         <div class="flex items-center">
-          <h1 class="uppercase text-[8px] text-gray-500 mr-3">Last Deposit</h1>
+          <h1 class="uppercase lg:text-[10px] text-[8px] text-gray-500 mr-3">Last Deposit</h1>
           <h1 class="font-bold text-[8px] lg:text-sm">{{ fundDetails.lastDeposit }}</h1>
         </div>
         <div class="flex items-center">
-          <h1 class="uppercase text-[8px] text-gray-500 mr-3">Last Withdrawal</h1>
+          <h1 class="uppercase lg:text-[10px] text-[8px] text-gray-500 mr-3">Last Withdrawal</h1>
           <h1 class="font-bold text-[8px] lg:text-sm">{{ fundDetails.lastWithdrawal }}</h1>
         </div>        
       </div>
@@ -72,10 +72,10 @@
     <h1 class="font-bold self-start my-3 lg:text-sm text-xs">Deposits</h1>
     <table class="border border-gray-500 mb-3">
       <tr class="">
-        <th class="p-2 uppercase font-bold text-gray-500 text-[10px]">Source</th>
-        <th class="p-2 uppercase font-bold text-gray-500 text-[10px]">Date</th>
-        <th class="p-2 uppercase font-bold text-gray-500 text-[10px]">Amount</th>
-        <th class="p-2 uppercase font-bold text-gray-500 text-[10px]">Notes</th>
+        <th class="p-2 uppercase font-bold text-gray-500 lg:text-[10px] text-[8px]">Source</th>
+        <th class="p-2 uppercase font-bold text-gray-500 lg:text-[10px] text-[8px]">Date</th>
+        <th class="p-2 uppercase font-bold text-gray-500 lg:text-[10px] text-[8px]">Amount</th>
+        <th class="p-2 uppercase font-bold text-gray-500 lg:text-[10px] text-[8px]">Notes</th>
       </tr>
       <tr class="rounded-lg" v-for="deposit in deposits" :key="deposit.id">
         <td class="p-2 font-bold text-[10px] lg:text-sm">{{ deposit.depositSource }}</td>
@@ -88,11 +88,11 @@
     <h1 class="font-bold self-start my-3 lg:text-sm text-xs">Withdrawals</h1>
     <table class="border border-gray-500">
       <tr class="">
-        <th class="p-2 uppercase font-bold text-gray-500 text-[10px]">From Fund</th>
-        <th class="p-2 uppercase font-bold text-gray-500 text-[10px]">Withdrawn For</th>
-        <th class="p-2 uppercase font-bold text-gray-500 text-[10px]">Date</th>
-        <th class="p-2 uppercase font-bold text-gray-500 text-[10px]">Amount</th>
-        <th class="p-2 uppercase font-bold text-gray-500 text-[10px]">Notes</th>
+        <th class="p-2 uppercase font-bold text-gray-500 lg:text-[10px] text-[8px]">From Fund</th>
+        <th class="p-2 uppercase font-bold text-gray-500 lg:text-[10px] text-[8px]">Withdrawn For</th>
+        <th class="p-2 uppercase font-bold text-gray-500 lg:text-[10px] text-[8px]">Date</th>
+        <th class="p-2 uppercase font-bold text-gray-500 lg:text-[10px] text-[8px]">Amount</th>
+        <th class="p-2 uppercase font-bold text-gray-500 lg:text-[10px] text-[8px]">Notes</th>
       </tr>
       <tr class="rounded-lg" v-for="withdrawal in withdrawals" :key="withdrawal.id">
         <td class="p-2 font-bold text-[10px] lg:text-sm">{{ withdrawal.withdrawnFrom }}</td>
