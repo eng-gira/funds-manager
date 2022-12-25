@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-[#F5F5F5] h-screen">
+  <div class="">
     <nav>
       <h3>
         <router-link to="/funds">Funds</router-link>

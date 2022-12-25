@@ -1,32 +1,33 @@
 <template>
-  <h3>
-    Showing the withdrawals history for
-    {{
-      !!fundDetails ? "the " + fundDetails.fundName + " Fund." : "all funds."
-    }}
-  </h3>
-  <WithdrawalsTable :fund="fund" />
+  <div class="mx-auto flex flex-col w-[300px] lg:w-[600px]">
+    <h1 class="font-bold self-start my-3 lg:text-lg">Withdrawals</h1>
+    <table class="border border-gray-500">
+      <tr class="">
+        <th class="p-2 uppercase font-bold text-gray-500 text-[10px]">From Fund</th>
+        <th class="p-2 uppercase font-bold text-gray-500 text-[10px]">Withdrawn For</th>
+        <th class="p-2 uppercase font-bold text-gray-500 text-[10px]">Date</th>
+        <th class="p-2 uppercase font-bold text-gray-500 text-[10px]">Amount</th>
+        <th class="p-2 uppercase font-bold text-gray-500 text-[10px]">Notes</th>
+      </tr>
+      <tr class="rounded-lg" v-for="withdrawal in withdrawals" :key="withdrawal.id">
+        <td class="p-2 font-bold text-[10px] lg:text-sm">{{ withdrawal.withdrawnFrom }}</td>
+        <td class="p-2 font-bold text-[10px]">{{ withdrawal.withdrawalReason}}</td>
+        <td class="p-2 font-bold text-[10px]">{{ withdrawal.createdOn }}</td>
+        <td class="p-2 font-bold text-[10px] lg:text-sm">{{ withdrawal.withdrawnAmount }}</td>
+        <td class="p-2 text-[10px]">{{ withdrawal.notes  }}</td>
+      </tr>
+    </table>
+  </div>
 </template>
 <script>
-import WithdrawalsTable from "@/components/WithdrawalsTable";
-
 export default {
   name: "WithdrawalsHistoryView",
-  components: { WithdrawalsTable },
-  props: {
-    fund: {
-      type: [String, Number],
-      required: true,
-    },
-  },
   created() {
-    if (this.fund != "all") {
-      this.$store.dispatch("getFundDetails", this.fund);
-    }
+    this.$store.dispatch("getWithdrawalsHistory"); // updates state's withdrawals.
   },
   computed: {
-    fundDetails() {
-      return this.fund == "all" ? null : this.$store.state.fundDetails;
+    withdrawals() {
+      return this.$store.state.withdrawals; // all funds' withdrawals.
     },
   },
 };

@@ -1,35 +1,32 @@
-/* eslint-disable */
 <template>
-  <h3>
-    Showing the deposits history for
-    {{
-      !!fundDetails ? "the " + fundDetails.fundName + " Fund." : "all funds."
-    }}
-  </h3>
-  <DepositsTable :fund="fund" />
+  <div class="mx-auto flex flex-col w-[300px] lg:w-[600px]">
+    <h1 class="font-bold self-start my-3 lg:text-lg">Deposits</h1>
+    <table class="border border-gray-500 mb-3">
+      <tr class="">
+        <th class="p-2 uppercase font-bold text-gray-500 text-[10px]">Source</th>
+        <th class="p-2 uppercase font-bold text-gray-500 text-[10px]">Date</th>
+        <th class="p-2 uppercase font-bold text-gray-500 text-[10px]">Amount</th>
+        <th class="p-2 uppercase font-bold text-gray-500 text-[10px]">Notes</th>
+      </tr>
+      <tr class="rounded-lg" v-for="deposit in deposits" :key="deposit.id">
+        <td class="p-2 font-bold text-[10px] lg:text-sm">{{ deposit.depositSource }}</td>
+        <td class="p-2 font-bold text-[10px]">{{ deposit.createdOn }}</td>
+        <td class="p-2 font-bold text-[10px] lg:text-sm">{{ deposit.depositedAmount }}</td>
+        <td class="p-2 text-[10px]">{{ deposit.notes }}</td>
+      </tr>
+    </table>
+  </div>
 </template>
 <script>
-import DepositsTable from "@/components/DepositsTable.vue";
-
 export default {
-  name: "DeposistsHistoryView",
-  components: { DepositsTable },
-  props: {
-    fund: {
-      type: [String, Number],
-      required: true,
-    },
+name: "DepositsTable",
+created() {
+  this.$store.dispatch("getDepositsHistory"); // updates state's deposits.
+},
+computed: {
+  deposits() {
+    return this.$store.state.deposits; // all funds' deposits.
   },
-  created() {
-    if (this.fund != "all") {
-      console.log("not all from dep. hist. view.");
-      this.$store.dispatch("getFundDetails", this.fund);
-    }
-  },
-  computed: {
-    fundDetails() {
-      return this.fund == "all" ? null : this.$store.state.fundDetails;
-    },
-  },
+},
 };
 </script>

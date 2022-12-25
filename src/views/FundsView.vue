@@ -1,16 +1,15 @@
 <template>
-  <h1>The Funds</h1>
   <div>
     <h4 style="display: inline-block; margin-left: 10px">
       <router-link
         style="text-decoration: none"
-        :to="{ name: 'DepositsHistoryView', query: { fund: 'all' } }"
+        :to="{ name: 'DepositsHistoryView'}"
         >Deposits History
       </router-link>
     </h4>
     <h4 style="display: inline-block; margin-left: 10px">
       <router-link
-        :to="{ name: 'WithdrawalsHistoryView', query: { fund: 'all' } }"
+        :to="{ name: 'WithdrawalsHistoryView'}"
         style="text-decoration: none"
         >Withdrawals History
       </router-link>
@@ -23,11 +22,6 @@
     <h4 style="display: inline-block; margin-left: 10px">
       <router-link to="/deposit" style="text-decoration: none">
         Deposit Funds
-      </router-link>
-    </h4>
-    <h4 style="display: inline-block; margin-left: 10px">
-      <router-link to="/withdraw" style="text-decoration: none">
-        Withdraw Funds
       </router-link>
     </h4>
   </div>

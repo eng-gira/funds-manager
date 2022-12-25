@@ -35,13 +35,11 @@ const routes = [
     path: "/deposits-history",
     name: "DepositsHistoryView",
     component: DepositsHistoryView,
-    props: (route) => ({ fund: route.query.fund }),
   },
   {
     path: "/withdrawals-history",
     name: "WithdrawalsHistoryView",
     component: WithdrawalsHistoryView,
-    props: (route) => ({ fund: route.query.fund }),
   },
   {
     path: "/withdraw",
