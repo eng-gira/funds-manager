@@ -1,12 +1,14 @@
 <template>
-  <nav>
-    <h3>
-      <router-link to="/funds">Funds</router-link>
-      |
-      <router-link to="/about">About</router-link>
-    </h3>
-  </nav>
-  <router-view />
+  <div class="bg-[#F5F5F5] h-screen">
+    <nav>
+      <h3>
+        <router-link to="/funds">Funds</router-link>
+        |
+        <router-link to="/about">About</router-link>
+      </h3>
+    </nav>
+    <router-view/>
+  </div>
 </template>
 
 <style>

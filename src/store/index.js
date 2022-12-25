@@ -1,10 +1,10 @@
 /* eslint-disable no-unused-vars */
-import { createStore } from "vuex";
-import FundService from "@/services/FundService.js";
+import { createStore } from "vuex"
+import FundService from "@/services/FundService.js"
 
 export default createStore({
   state: {
-    funds: [],
+    funds: null,
     deposits: [],
     withdrawals: [],
     fundDeposits: [],
@@ -94,4 +94,4 @@ export default createStore({
     },
   },
   modules: {},
-});
+})

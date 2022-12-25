@@ -33,32 +33,16 @@
   </div>
   <h3>Total Balance: {{ totalBalance }}</h3>
   <br />
-  <table class="funds-table">
-    <tr>
-      <th>FUND</th>
-      <th>BALANCE</th>
-      <th>LAST DEPOSIT</th>
-      <th>LAST WITHDRAWAL</th>
-    </tr>
-    <tr v-for="fund in funds" :key="fund.id">
-      <td>
-        <router-link
-          :to="{ name: 'Fund', query: { fund: fund.id } }"
-          style="text-decoration: none"
-        >
-          <strong>{{
-            fund.fundName + " (" + fund.fundPercentage + " %)"
-          }}</strong>
-        </router-link>
-      </td>
-      <td>{{ fund.balance }}</td>
-      <td>{{ fund.lastDeposit }}</td>
-      <td>{{ fund.lastWithdrawal }}</td>
-    </tr>
-  </table>
+
+  <div v-if="funds !== null && funds.length > 0">
+    <FundCard v-for="fund in funds" :key="fund.id" :fund="fund" class="flex flex-col mx-auto"/>
+  </div>
 </template>
 
 <script>
+import FundCard from '../components/FundCard.vue'
+
+
 export default {
   name: "FundsView",
   created() {
@@ -72,6 +56,8 @@ export default {
       return this.$store.state.funds;
     },
     totalBalance() {
+      if(!this.funds) return 0
+      
       let funds = this.funds;
       let total = 0;
       for (let i = 0; i < funds.length; i++) {
@@ -80,6 +66,9 @@ export default {
       return total;
     },
   },
+  components: {
+    FundCard,
+  }
 };
 </script>
 <style scoped>

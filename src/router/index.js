@@ -8,6 +8,7 @@ import DepositFormView from "@/views/DepositFormView.vue";
 import CreateFundView from "@/views/CreateFundView.vue";
 import UpdateFundFormView from "@/views/UpdateFundFormView.vue";
 import NotFoundView from "@/views/NotFoundView.vue";
+import LoginView from "@/views/LoginView.vue";
 
 const routes = [
   {
@@ -74,6 +75,11 @@ const routes = [
     name: "NotFoundView",
     component: NotFoundView,
   },
+  {
+    path: '/login',
+    name: 'LoginView',
+    component: LoginView
+  }
 ];
 
 const router = createRouter({
