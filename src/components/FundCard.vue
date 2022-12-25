@@ -12,21 +12,10 @@
               <div class="text-xs lg:text-sm">Balance: {{ fund.balance }}</div>
           </div>
       </div>
-
-      <!-- Body -->
-      <!-- <h1 class="flex text-xs lg:text-md">({{ fund.fundPercentage }} %)</h1> -->
-      
-      <!-- Footer -->
-      <!-- <div class="flex justify-between mt-6 items-center">
-        <h1 class="lg:text-md text-xs" v-if="fund.lastDeposit">Last Deposit: {{   fund.lastDeposit.substring(0, 10) }} </h1>
-        <h1 class="lg:text-md text-xs" v-if="fund.lastWithdrawal">Last Withdrawal: {{ fund.lastWithdrawal.substring(0, 10) }} </h1>
-      </div> -->
   </div>
 </template>
 <script setup>
 import { onMounted } from 'vue';
-
-
 
 const props = defineProps({
   fund: Object
