@@ -130,14 +130,12 @@
     <h1 class="font-bold self-start my-3 lg:text-sm text-xs">Withdrawals</h1>
     <table class="border border-gray-500">
       <tr class="">
-        <th class="p-2 uppercase font-bold text-gray-500 lg:text-[10px] text-[8px]">From Fund</th>
         <th class="p-2 uppercase font-bold text-gray-500 lg:text-[10px] text-[8px]">Withdrawn For</th>
         <th class="p-2 uppercase font-bold text-gray-500 lg:text-[10px] text-[8px]">Date</th>
         <th class="p-2 uppercase font-bold text-gray-500 lg:text-[10px] text-[8px]">Amount</th>
         <th class="p-2 uppercase font-bold text-gray-500 lg:text-[10px] text-[8px]">Notes</th>
       </tr>
       <tr class="rounded-lg" v-for="withdrawal in withdrawals" :key="withdrawal.id">
-        <td class="p-2 font-bold text-[10px] lg:text-sm">{{ withdrawal.withdrawnFrom }}</td>
         <td class="p-2 font-bold text-[10px]">{{ withdrawal.withdrawalReason}}</td>
         <td class="p-2 font-bold text-[10px]">{{ withdrawal.createdOn }}</td>
         <td class="p-2 font-bold text-[10px] lg:text-sm">{{ withdrawal.withdrawnAmount }}</td>
