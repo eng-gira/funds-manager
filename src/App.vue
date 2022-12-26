@@ -1,15 +1,23 @@
 <template>
-  <div class="">
-    <nav>
-      <h3>
-        <router-link to="/funds">Funds</router-link>
-        |
-        <router-link to="/about">About</router-link>
-      </h3>
-    </nav>
-    <router-view/>
+  <div class="mx-auto">
+    <div class="flex mx-auto mt-6 space-x-3">
+      <router-link to="/funds">Funds</router-link>
+      <router-link to="/about">About</router-link>
+      <h1 @click="logout" class="hover:underline cursor-pointer">Logout</h1>
+    </div>
   </div>
+  <router-view/>
 </template>
+<script setup>
+import { useRouter } from 'vue-router'
+
+const router = useRouter()
+
+function logout() {
+  localStorage.removeItem('access_token')
+  router.push('/login')
+}
+</script>
 
 <style>
 #app {

@@ -27,6 +27,13 @@ export default {
       }
     })
   },
+  register(data) {
+    return authClient.post('/register', data, {
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+  },
   getFunds() {
     return apiClient.get("/index", {
       headers: {

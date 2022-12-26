@@ -1,24 +1,16 @@
-import { createRouter, createWebHistory } from "vue-router";
-import FundsView from "@/views/FundsView.vue";
-import FundView from "@/views/FundView.vue";
-import DepositsHistoryView from "@/views/DepositsHistoryView.vue";
-import WithdrawalsHistoryView from "@/views/WithdrawalsHistoryView.vue";
-import WithdrawalFormView from "@/views/WithdrawalFormView.vue";
-import DepositFormView from "@/views/DepositFormView.vue";
-import CreateFundView from "@/views/CreateFundView.vue";
-import NotFoundView from "@/views/NotFoundView.vue";
-import LoginView from "@/views/LoginView.vue";
+import { createRouter, createWebHistory } from "vue-router"
+import FundsView from "@/views/FundsView.vue"
+import FundView from "@/views/FundView.vue"
+import DepositsHistoryView from "@/views/DepositsHistoryView.vue"
+import WithdrawalsHistoryView from "@/views/WithdrawalsHistoryView.vue"
+import WithdrawalFormView from "@/views/WithdrawalFormView.vue"
+import DepositFormView from "@/views/DepositFormView.vue"
+import CreateFundView from "@/views/CreateFundView.vue"
+import NotFoundView from "@/views/NotFoundView.vue"
+import LoginView from "@/views/LoginView.vue"
+import RegisterView from "@/views/RegisterView.vue"
 
 const routes = [
-  {
-    path: "/about",
-    name: "about",
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () =>
-      import(/* webpackChunkName: "about" */ "../views/AboutView.vue"),
-  },
   {
     path: "/funds",
     name: "FundsView",
@@ -70,7 +62,21 @@ const routes = [
     path: '/login',
     name: 'LoginView',
     component: LoginView
-  }
+  },
+  {
+    path: '/register',
+    name: 'RegisterView',
+    component: RegisterView
+  },
+  {
+    path: "/about",
+    name: "about",
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: () =>
+      import(/* webpackChunkName: "about" */ "../views/AboutView.vue"),
+  },
 ];
 
 const router = createRouter({

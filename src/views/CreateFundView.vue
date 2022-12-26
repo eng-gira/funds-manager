@@ -9,7 +9,7 @@
       v-model="fundName"
       id="fund-name" 
       />
-      <h1 class="lg:text-xs text-[10px]" v-if="fundNameError" style="color:red">{{ fundNameError }}</h1>
+      <h1 class="lg:text-xs text-[10px] text-red-500" v-if="fundNameError">{{ fundNameError }}</h1>
     </div>
 
     <div class="flex flex-col space-y-2 mb-3">
@@ -17,21 +17,21 @@
       <input id="percentage" type="number" v-model="fundPercentage" step="0.01" min="0" 
       class="rounded-lg p-2 text-sm lg:text-base font-bold border border-black"
       />
-      <h1 class="lg:text-xs text-[10px]" v-if="fundPercentageError" style="color:red">{{ fundPercentageError }}</h1>
+      <h1 class="lg:text-xs text-[10px] text-red-500" v-if="fundPercentageError">{{ fundPercentageError }}</h1>
     </div>
 
     <div class="flex flex-col space-y-2 mb-3">
       <label class="self-start uppercase lg:text-xs text-[10px] text-gray-500 font-bold" for="fundSize">Size (Optional)</label>
       <input id="fundSize" type="number" v-model="size" placeholder="Default: Open" step="0.01" min="0" 
         class="rounded-lg p-2 text-sm lg:text-base font-bold border border-black"/>
-      <h1 class="lg:text-xs text-[10px]" v-if="sizeError" style="color:red">{{ sizeError }}</h1>
+      <h1 class="lg:text-xs text-[10px] text-red-500" v-if="sizeError">{{ sizeError }}</h1>
     </div>
 
     <div class="flex flex-col space-y-2 mb-3">
       <label class="self-start uppercase lg:text-xs text-[10px] text-gray-500 font-bold" for="notes">Notes (Optional)</label> 
       <textarea id="notes" type="text" v-model="notes"
         class="mt-5 text-xs lg:text-sm p-1 border border-gray-500 min-h-[100px] resize-none rounded-lg w-full"></textarea>
-      <h1 class="lg:text-xs text-[10px]" v-if="notesError" style="color:red">{{ notesError }}</h1>
+      <h1 class="lg:text-xs text-[10px] text-red-500" v-if="notesError">{{ notesError }}</h1>
     </div>
 
     <button class="self-center p-2 bg-blue-900 text-white rounded-lg">Submit</button>
