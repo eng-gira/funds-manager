@@ -6,7 +6,6 @@ import WithdrawalsHistoryView from "@/views/WithdrawalsHistoryView.vue";
 import WithdrawalFormView from "@/views/WithdrawalFormView.vue";
 import DepositFormView from "@/views/DepositFormView.vue";
 import CreateFundView from "@/views/CreateFundView.vue";
-import UpdateFundFormView from "@/views/UpdateFundFormView.vue";
 import NotFoundView from "@/views/NotFoundView.vue";
 import LoginView from "@/views/LoginView.vue";
 
@@ -22,12 +21,12 @@ const routes = [
   },
   {
     path: "/funds",
-    name: "Funds",
+    name: "FundsView",
     component: FundsView,
   },
   {
     path: "/fund",
-    name: "Fund",
+    name: "FundView",
     component: FundView,
     props: (route) => ({ fund: parseInt(route.query.fund) }),
   },
@@ -57,12 +56,6 @@ const routes = [
     path: "/fund/create",
     name: "CreateFundView",
     component: CreateFundView,
-  },
-  {
-    path: "/fund/update",
-    name: "UpdateFundFormView",
-    component: UpdateFundFormView,
-    props: (route) => ({ fund: parseInt(route.query.fund) }),
   },
   {
     path: "/",

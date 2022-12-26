@@ -2,10 +2,16 @@
    <div class="flex flex-col p-2 w-[350px] lg:w-[600px] mx-auto">
     <div class="flex justify-between mb-3 items-center">
       <div class="flex space-x-3">
-        <h1 class="font-bold lg:text-lg">
+        <h1 v-if="!editingFundName" class="font-bold lg:text-lg">
           {{ fundDetails.fundName }} Fund
         </h1>
-        <router-link :to="{name: 'UpdateFundFormView', query: { fund: fundDetails.id }}"><v-icon class="w-[15px]" name="fa-pen"/></router-link>
+        <v-icon v-if="!editingFundName" class="w-[15px] cursor-pointer" name="fa-pen" @click="startEditingFundName"/>
+        <input v-else type="text" @keyup.enter="updateFundName($event.target.value)" ref="fundNameUpdateField" 
+          @keyup.esc="stopEditingFundName"
+          @focusout="stopEditingFundName"
+          class="border border-black p-1 lg:text-lg rounded-lg"
+          :value="fundDetails.fundName"
+        />
       </div>
       <div class="flex space-x-3 lg:text-sm text-xs">
         <router-link class="hover:underline" :to="{name: 'DepositFormView', query: {fund: fundDetails.id}}">Deposit</router-link>
@@ -34,11 +40,23 @@
       <div class="flex flex-col">
         <div class="flex items-center mb-3">
           <h1 class="uppercase text-[8px] lg:text-[10px] text-gray-500 mr-3">Size</h1>
-          <h1 class="font-bold text-[10px] lg:text-sm">{{ fundDetails.size }}</h1>
+          <h1 title="double-click to edit" v-if="!editingFundSize" class="font-bold text-[10px] lg:text-sm" @dblclick="startEditingFundSize">{{ fundDetails.size }}</h1>
+          <input v-else @keyup.esc="stopEditingFundSize" @keyup.enter="updateFundSize($event.target.value)" 
+            @focusout="stopEditingFundSize"
+            ref="fundSizeUpdateField"
+            class="border border-black p-1 text-xs lg:text-[10px] rounded-lg w-[40px]"
+            :value="fundDetails.size"
+          />
         </div>
         <div class="flex items-center">
           <h1 class="uppercase text-[8px] lg:text-[10px] text-gray-500 mr-3">Percentage</h1>
-          <h1 class="font-bold text-[10px] lg:text-sm">{{ fundDetails.fundPercentage }} %</h1>
+          <h1 title="double-click to edit" v-if="!editingFundPercentage" @dblclick="startEditingFundPercentage" class="font-bold text-[10px] lg:text-sm">{{ fundDetails.fundPercentage }} %</h1>
+          <input v-else @keyup.esc="stopEditingFundPercentage" @keyup.enter="updateFundPercentage($event.target.value)"
+            @focusout="stopEditingFundPercentage"
+            ref="fundPercentageUpdateField"
+            class="border border-black p-1 text-xs lg:text-[10px] rounded-lg w-[30px]"
+            :value="fundDetails.fundPercentage"
+          />
         </div>
       </div>
     </div> <!-- End of Fund Box -->
@@ -111,6 +129,9 @@
   </div>
 </template>
 <script>
+import { nextTick } from 'vue';
+import FundService from "@/services/FundService.js"
+
 export default {
   name: "FundView",
   props: {
@@ -118,6 +139,13 @@ export default {
       type: Number, // the fund's id.
       required: true,
     },
+  },
+  data() {
+    return {
+      editingFundName: false,
+      editingFundPercentage: false,
+      editingFundSize: false,
+    }
   },
   created() {
     this.$store.dispatch("getFundDetails", this.fund); // store the fund details in the state.
@@ -137,5 +165,63 @@ export default {
       return this.$store.state.fundWithdrawals
     },
   },
+  methods: {
+    startEditingFundSize() {
+      this.editingFundSize = true
+      nextTick(() => {
+        this.$refs.fundSizeUpdateField.focus()
+      })
+    },
+    stopEditingFundSize() {
+      this.editingFundSize = false
+    },
+    updateFundSize(value) {
+      FundService.setSize(JSON.stringify({id: this.fund, size: value})).then((resp) => {
+        console.log('setSize - resp', resp)
+        this.$store.dispatch("getFundDetails", this.fund)
+      })
+      this.stopEditingFundSize()
+    },
+
+    startEditingFundName() {
+      this.editingFundName = true
+      nextTick(() => {
+        this.$refs.fundNameUpdateField.focus()
+      })
+    },
+    stopEditingFundName() {
+      this.editingFundName = false
+    },
+    updateFundName(value) {
+      FundService.setFundName(JSON.stringify({id: this.fund, fundName: value})).then((resp) => {
+        console.log('setFundName - resp', resp)
+        this.$store.dispatch("getFundDetails", this.fund)
+      })
+      this.stopEditingFundName()
+    },
+
+    startEditingFundPercentage() {
+      this.editingFundPercentage = true
+      nextTick(() => {
+        this.$refs.fundPercentageUpdateField.focus()
+      })
+    },
+    stopEditingFundPercentage() {
+      this.editingFundPercentage = false
+    },
+    updateFundPercentage(value) {
+      FundService.setFundPercentage(JSON.stringify({id: this.fund, fundPercentage: value})).then((resp) => {
+        console.log('setFundPercentage - resp', resp)
+
+        this.$store.dispatch("getFundDetails", this.fund)
+      })
+      this.stopEditingFundPercentage()
+    },
+    stopEditingFields() {
+      this.stopEditingFundPercentage()
+      this.stopEditingFundName()
+      this.stopEditingFundSize()
+    }
+  }
 };
 </script>
