@@ -65,39 +65,3 @@ export default {
   }
 };
 </script>
-<style scoped>
-.funds-table {
-  margin: auto;
-  /* border: 3px solid black; */
-  border-collapse: collapse;
-  width: 100%;
-}
-th {
-  /* padding: 50px; */
-  border: 3px solid black;
-  padding-top: 12px;
-  padding-bottom: 12px;
-  text-align: left;
-  background-color: black;
-  color: white;
-  text-align: center;
-}
-td {
-  padding: 100px;
-  padding-left: 100px;
-  padding-right: 100px;
-  border: 1px solid black;
-}
-td,
-th {
-  border: 1px solid #ddd;
-  padding: 50px;
-}
-.funds-table tr:nth-child(even) {
-  background-color: #f2f2f2;
-}
-
-.funds-table tr:hover {
-  background-color: #ddd;
-}
-</style>

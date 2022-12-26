@@ -29,7 +29,7 @@
     <div class="flex flex-col space-y-2 mb-3">
       <label class="self-start uppercase lg:text-xs text-[10px] text-gray-500 font-bold" for="deposited-amount">Deposited Amount</label>
       <input id="deposited-amount" type="number" v-model="depositedAmount" step="0.01" min="0.01" 
-      class="rounded-lg p-2 ml-2 text-sm lg:text-base font-bold border border-black "
+      class="rounded-lg p-2 text-sm lg:text-base font-bold border border-black "
       />
       <h1 class="lg:text-xs text-[10px]" v-if="depositedAmountError" style="color:red">{{ depositedAmountError }}</h1>
     </div>

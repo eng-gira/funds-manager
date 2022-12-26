@@ -1,41 +1,50 @@
-<!-- eslint-disable no-unused-vars -->
-<!-- eslint-disable prettier/prettier -->
 <template>
-  <form @submit.prevent="submitForm">
-    <h2 style="color: #d3443a">Withdraw Funds</h2>
-    <br />
-    <p v-if="withdrawalReasonError" style="color:red">{{ withdrawalReasonError }}</p>
-    <label for="withdrawal-reason"><strong>Withdrawal Reason (Optional):</strong></label>
-    <input id="withdrawal-reason" type="text" v-model="withdrawalReason" />
-    <br />
+  <form  @submit.prevent="submitForm"
+    class="flex flex-col mx-auto w-[300px] lg:w-[500px] max-w-[500px] border border-gray-500 rounded-lg p-4 mb-6">
+    <h2 class="font-bold lg:text-xl text-lg mb-3 text-red-700">Withdraw Funds</h2>
 
-    <p v-if="withdrawnFromError" style="color:red">{{ withdrawnFromError }}</p>
-    <label for="withdrawn-from"><strong>From Fund:</strong></label>
-    <select id="withdrawn-from" v-model="withdrawnFrom">
-      <option disabled selected value> -- Fund Selection -- </option>
-      <option v-for="fund in funds" :key="fund.id" :value="fund.id">
-        {{ fund.fundName }}
-      </option>
-    </select>
-    <br />
+    <div class="flex flex-col space-y-2 mb-3">
+      <label class="self-start uppercase lg:text-xs text-[10px] text-gray-500 font-bold" for="withdrawal-reason">Withdrawal Reason (Optional)</label>
+      <input
+      type="text"
+      class="rounded-lg p-2 text-sm lg:text-base font-bold border border-black"
+      v-model="withdrawalReason"
+      id="withdrawal-reason" 
+      />
+      <h1 class="lg:text-xs text-[10px]" v-if="withdrawalReasonError" style="color:red">{{ withdrawalReasonError }}</h1>
+    </div>
 
-    <p v-if="withdrawnAmountError" style="color:red">{{ withdrawnAmountError }}</p>
-    <label for="withdrawn-amount"><strong>Withdrawn Amount:</strong></label>
-    <input id="withdrawn-amount" type="number" v-model="withdrawnAmount" step="0.01" min="0.01"/>
-    <br />
+    <div class="flex flex-col space-y-2 mb-3">
+      <label for="withdrawn-from" class="self-start uppercase lg:text-xs text-[10px] text-gray-500 font-bold">From Fund</label>
+      <select id="withdrawn-from" v-model="withdrawnFrom" class="rounded-lg p-2 text-xs lg:text-sm border border-black w-min max-w-min">
+        <option disabled selected value> -- Fund Selection -- </option>
+        <option v-for="fund in funds" :key="fund.id" :value="fund.id">
+          {{ fund.fundName }}
+        </option>
+      </select>
 
-    <p v-if="notesError" style="color:red">{{ notesError }}</p>
-    <label for="notes"><strong>Notes (Optional):</strong></label> 
-    <br />
-    <textarea id="notes" type="text" v-model="notes"></textarea>
-    <br />
-    <button class="button-18">Withdraw</button>
+      <h1 class="lg:text-xs text-[10px]" v-if="withdrawnFromError" style="color:red">{{ withdrawnFromError }}</h1>
+    </div>
+
+    <div class="flex flex-col space-y-2 mb-3">
+      <label class="self-start uppercase lg:text-xs text-[10px] text-gray-500 font-bold" for="withdrawn-amount">Withdrawn Amount</label>
+      <input id="withdrawn-amount" type="number" v-model="withdrawnAmount" step="0.01" min="0.01" 
+        class="rounded-lg p-2 text-sm lg:text-base font-bold border border-black "
+      />
+      <h1 class="lg:text-xs text-[10px]" v-if="withdrawnAmountError" style="color:red">{{ withdrawnAmountError }}</h1>
+    </div>
+
+    <div class="flex flex-col space-y-2 mb-3">
+      <label class="self-start uppercase lg:text-xs text-[10px] text-gray-500 font-bold" for="notes">Notes (Optional)</label> 
+      <textarea id="notes" type="text" v-model="notes"
+        class="mt-5 text-xs lg:text-sm p-1 border border-gray-500 min-h-[100px] resize-none rounded-lg w-full"></textarea>
+      <h1 class="lg:text-xs text-[10px]" v-if="notesError" style="color:red">{{ notesError }}</h1>
+    </div>
+
+    <button class="self-center p-2 bg-red-900 text-white rounded-lg">Withdraw</button>
   </form>
 </template>
 <script>
-// eslint-disable prettier/prettier
-// eslint-disable no-unused-vars
-
 import { useForm, useField } from "vee-validate";
 import { useStore } from "vuex";
 import FundService from "@/services/FundService.js";
@@ -127,29 +136,3 @@ export default {
   },
 };
 </script>
-<style scoped>
-input {
-  margin-bottom: 40px;
-  margin-left: 30px;
-  width: 300px;
-  height: 35px;
-}
-select {
-  margin-bottom: 40px;
-  margin-left: 30px;
-  width: 300px;
-  height: 35px;
-}
-textarea {
-  margin-bottom: 40px;
-  margin-top: 30px;
-  width: 500px;
-  height: 150px;
-}
-form {
-  border: 1px solid black;
-  padding: 20px;
-  width: 800px;
-  margin: auto;
-}
-</style>

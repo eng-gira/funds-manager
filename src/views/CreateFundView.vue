@@ -5,7 +5,7 @@
       <label class="self-start uppercase lg:text-xs text-[10px] text-gray-500 font-bold" for="fund-name">Fund Name</label>
       <input
       type="text"
-      class="rounded-lg p-2 ml-2 text-sm lg:text-base font-bold border border-black"
+      class="rounded-lg p-2 text-sm lg:text-base font-bold border border-black"
       v-model="fundName"
       id="fund-name" 
       />
@@ -15,7 +15,7 @@
     <div class="flex flex-col space-y-2 mb-3">
       <label class="self-start uppercase lg:text-xs text-[10px] text-gray-500 font-bold" for="percentage">Percentage (%)</label>
       <input id="percentage" type="number" v-model="fundPercentage" step="0.01" min="0" 
-      class="rounded-lg p-2 ml-2 text-sm lg:text-base font-bold border border-black"
+      class="rounded-lg p-2 text-sm lg:text-base font-bold border border-black"
       />
       <h1 class="lg:text-xs text-[10px]" v-if="fundPercentageError" style="color:red">{{ fundPercentageError }}</h1>
     </div>
@@ -23,7 +23,7 @@
     <div class="flex flex-col space-y-2 mb-3">
       <label class="self-start uppercase lg:text-xs text-[10px] text-gray-500 font-bold" for="fundSize">Size (Optional)</label>
       <input id="fundSize" type="number" v-model="size" placeholder="Default: Open" step="0.01" min="0" 
-        class="rounded-lg p-2 ml-2 text-sm lg:text-base font-bold border border-black"/>
+        class="rounded-lg p-2 text-sm lg:text-base font-bold border border-black"/>
       <h1 class="lg:text-xs text-[10px]" v-if="sizeError" style="color:red">{{ sizeError }}</h1>
     </div>
 
