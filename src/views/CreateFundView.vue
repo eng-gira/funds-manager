@@ -1,30 +1,40 @@
-<!-- eslint-disable no-unused-vars -->
-<!-- eslint-disable prettier/prettier -->
 <template>
-  <form @submit.prevent="submitForm">
-    <h2>Create a Fund</h2>
-    <br />
-    <p v-if="fundNameError" style="color:red">{{ fundNameError }}</p>
-    <label for="fund-name"><strong>Fund Name:</strong></label>
-    <input id="fund-name" type="text" v-model="fundName" />
-    <br />
+  <form @submit.prevent="submitForm" class="flex flex-col mx-auto w-[300px] lg:w-[500px] border border-gray-500 rounded-lg p-4 mb-6">
+    <h1 class="font-bold lg:text-xl text-lg mb-3">Create a Fund</h1>
+    <div class="flex flex-col space-y-2 mb-3">
+      <label class="self-start uppercase lg:text-xs text-[10px] text-gray-500 font-bold" for="fund-name">Fund Name</label>
+      <input
+      type="text"
+      class="rounded-lg p-2 ml-2 text-sm lg:text-base font-bold border border-black"
+      v-model="fundName"
+      id="fund-name" 
+      />
+      <h1 class="lg:text-xs text-[10px]" v-if="fundNameError" style="color:red">{{ fundNameError }}</h1>
+    </div>
 
-    <p v-if="fundPercentageError" style="color:red">{{ fundPercentageError }}</p>
-    <label for="percentage"><strong>Percentage (%):</strong></label>
-    <input id="percentage" type="number" v-model="fundPercentage" step="0.01" min="0" />
-    <br />
+    <div class="flex flex-col space-y-2 mb-3">
+      <label class="self-start uppercase lg:text-xs text-[10px] text-gray-500 font-bold" for="percentage">Percentage (%)</label>
+      <input id="percentage" type="number" v-model="fundPercentage" step="0.01" min="0" 
+      class="rounded-lg p-2 ml-2 text-sm lg:text-base font-bold border border-black"
+      />
+      <h1 class="lg:text-xs text-[10px]" v-if="fundPercentageError" style="color:red">{{ fundPercentageError }}</h1>
+    </div>
 
-    <p v-if="sizeError" style="color:red">{{ sizeError }}</p>
-    <label for="fundSize"><strong>Size (Optional):</strong></label>
-    <input id="fundSize" type="number" v-model="size" placeholder="Default: Open" step="0.01" min="0"/>
-    <br />
+    <div class="flex flex-col space-y-2 mb-3">
+      <label class="self-start uppercase lg:text-xs text-[10px] text-gray-500 font-bold" for="fundSize">Size (Optional)</label>
+      <input id="fundSize" type="number" v-model="size" placeholder="Default: Open" step="0.01" min="0" 
+        class="rounded-lg p-2 ml-2 text-sm lg:text-base font-bold border border-black"/>
+      <h1 class="lg:text-xs text-[10px]" v-if="sizeError" style="color:red">{{ sizeError }}</h1>
+    </div>
 
-    <p v-if="notesError" style="color:red">{{ notesError }}</p>
-    <label for="notes"><strong>Notes (Optional):</strong></label> 
-    <br />
-    <textarea id="notes" type="text" v-model="notes"></textarea>
-    <br />
-    <button class="button-40">Submit</button>
+    <div class="flex flex-col space-y-2 mb-3">
+      <label class="self-start uppercase lg:text-xs text-[10px] text-gray-500 font-bold" for="notes">Notes (Optional)</label> 
+      <textarea id="notes" type="text" v-model="notes"
+        class="mt-5 text-xs lg:text-sm p-1 border border-gray-500 min-h-[100px] resize-none rounded-lg w-full"></textarea>
+      <h1 class="lg:text-xs text-[10px]" v-if="notesError" style="color:red">{{ notesError }}</h1>
+    </div>
+
+    <button class="self-center p-2 bg-blue-900 text-white rounded-lg">Submit</button>
   </form>
 </template>
 <script>
@@ -131,23 +141,3 @@ export default {
   },
 };
 </script>
-<style scoped>
-input {
-  margin-bottom: 40px;
-  margin-left: 30px;
-  width: 300px;
-  height: 35px;
-}
-textarea {
-  margin-bottom: 40px;
-  margin-top: 30px;
-  width: 500px;
-  height: 150px;
-}
-form {
-  border: 1px solid black;
-  padding: 20px;
-  width: 800px;
-  margin: auto;
-}
-</style>

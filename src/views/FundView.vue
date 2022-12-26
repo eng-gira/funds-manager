@@ -1,7 +1,12 @@
 <template>
    <div class="flex flex-col p-2 w-[350px] lg:w-[600px] mx-auto">
     <div class="flex justify-between mb-3 items-center">
-      <h1 class="font-bold lg:text-lg">{{ fundDetails.fundName }} Fund</h1>
+      <div class="flex space-x-3">
+        <h1 class="font-bold lg:text-lg">
+          {{ fundDetails.fundName }} Fund
+        </h1>
+        <router-link :to="{name: 'UpdateFundFormView', query: { fund: fundDetails.id }}"><v-icon class="w-[15px]" name="fa-pen"/></router-link>
+      </div>
       <div class="flex space-x-3 lg:text-sm text-xs">
         <router-link class="hover:underline" :to="{name: 'DepositFormView', query: {fund: fundDetails.id}}">Deposit</router-link>
         <h1>|</h1>

@@ -9,9 +9,9 @@ import "./assets/main.css";
 import { OhVueIcon, addIcons } from "oh-vue-icons";
 
 
-import { HiExternalLink } from "oh-vue-icons/icons";
+import { FaPen } from "oh-vue-icons/icons";
 
-addIcons( HiExternalLink );
+addIcons( FaPen );
 
 
 createApp(App).use(store).use(router).component("v-icon", OhVueIcon).mount("#app");
