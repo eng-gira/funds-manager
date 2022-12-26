@@ -1,45 +1,53 @@
-<!-- eslint-disable no-unused-vars -->
-<!-- eslint-disable prettier/prettier -->
 <template>
-  <form @submit.prevent="submitForm">
-    <h2 style="color: #04aa6d">Deposit Funds</h2>
-    <br />
-    <p v-if="depositSourceError" style="color:red">{{ depositSourceError }}</p>
-    <label for="deposit-source"><strong>Deposit Source:</strong></label>
-    <input id="deposit-source" type="text" v-model="depositSource" />
-    <br />
+  <form  @submit.prevent="submitForm"
+    class="flex flex-col mx-auto w-[300px] lg:w-[500px] max-w-[500px] border border-gray-500 rounded-lg p-4 mb-6">
+    <h2 class="font-bold lg:text-xl text-lg mb-3 text-green-700">Deposit Funds</h2>
 
-    <p v-if="depositedToError" style="color:red">{{ depositedToError }}</p>
-    <label for="deposited-to"><strong>Deposited To:</strong></label>
-    <select id="deposited-to" v-model="depositedTo">
-      <option disabled selected value> -- Select an Option -- </option>
-      <option value="all">All (Distributed by percentage)</option>
-      <option v-for="fund in funds" :key="fund.id" :value="fund.id">
-        {{ fund.fundName }}
-      </option>
-    </select>
-    <br />
+    <div class="flex flex-col space-y-2 mb-3">
+      <label class="self-start uppercase lg:text-xs text-[10px] text-gray-500 font-bold" for="deposit-source">Deposit Source</label>
+      <input
+      type="text"
+      class="rounded-lg p-2 text-sm lg:text-base font-bold border border-black"
+      v-model="depositSource"
+      id="deposit-source" 
+      />
+      <h1 class="lg:text-xs text-[10px]" v-if="depositSourceError" style="color:red">{{ depositSourceError }}</h1>
+    </div>
+    <div class="flex flex-col space-y-2 mb-3">
+      <label for="deposited-to" class="self-start uppercase lg:text-xs text-[10px] text-gray-500 font-bold">Deposited To</label>
+      <select id="deposited-to" v-model="depositedTo" class="rounded-lg p-2 text-xs lg:text-sm border border-black w-min max-w-min">
+        <option disabled selected value> -- Select an Option -- </option>
+        <option value="all">All (Distributed by percentage)</option>
+        <option v-for="fund in funds" :key="fund.id" :value="fund.id">
+          {{ fund.fundName }}
+        </option>
+      </select>
 
-    <p v-if="depositedAmountError" style="color:red">{{ depositedAmountError }}</p>
-    <label for="deposited-amount"><strong>Deposited Amount:</strong></label>
-    <input id="deposited-amount" type="number" v-model="depositedAmount" step="0.01" min="0.01"/>
-    <br />
+      <h1 class="lg:text-xs text-[10px]" v-if="depositedToError" style="color:red">{{ depositedToError }}</h1>
+    </div>
 
-    <p v-if="notesError" style="color:red">{{ notesError }}</p>
-    <label for="notes"><strong>Notes (Optional):</strong></label> 
-    <br />
-    <textarea id="notes" type="text" v-model="notes"></textarea>
-    <br />
-    <button class="button-18">Deposit</button>
+    <div class="flex flex-col space-y-2 mb-3">
+      <label class="self-start uppercase lg:text-xs text-[10px] text-gray-500 font-bold" for="deposited-amount">Deposited Amount</label>
+      <input id="deposited-amount" type="number" v-model="depositedAmount" step="0.01" min="0.01" 
+      class="rounded-lg p-2 ml-2 text-sm lg:text-base font-bold border border-black "
+      />
+      <h1 class="lg:text-xs text-[10px]" v-if="depositedAmountError" style="color:red">{{ depositedAmountError }}</h1>
+    </div>
+
+    <div class="flex flex-col space-y-2 mb-3">
+      <label class="self-start uppercase lg:text-xs text-[10px] text-gray-500 font-bold" for="notes">Notes (Optional)</label> 
+      <textarea id="notes" type="text" v-model="notes"
+        class="mt-5 text-xs lg:text-sm p-1 border border-gray-500 min-h-[100px] resize-none rounded-lg w-full"></textarea>
+      <h1 class="lg:text-xs text-[10px]" v-if="notesError" style="color:red">{{ notesError }}</h1>
+    </div>
+
+    <button class="self-center p-2 bg-green-900 text-white rounded-lg">Deposit</button>
   </form>
 </template>
 <script>
-// eslint-disable prettier/prettier
-// eslint-disable no-unused-vars
-
-import { useForm, useField } from "vee-validate";
-import { useStore } from "vuex";
-import FundService from "@/services/FundService.js";
+import { useForm, useField } from "vee-validate"
+import { useStore } from "vuex"
+import FundService from "@/services/FundService.js"
 
 export default {
   name: "DepositFormView",
@@ -126,29 +134,3 @@ export default {
   },
 };
 </script>
-<style scoped>
-input {
-  margin-bottom: 40px;
-  margin-left: 30px;
-  width: 300px;
-  height: 35px;
-}
-select {
-  margin-bottom: 40px;
-  margin-left: 30px;
-  width: 300px;
-  height: 35px;
-}
-textarea {
-  margin-bottom: 40px;
-  margin-top: 30px;
-  width: 500px;
-  height: 150px;
-}
-form {
-  border: 1px solid black;
-  padding: 20px;
-  width: 800px;
-  margin: auto;
-}
-</style>
