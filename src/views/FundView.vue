@@ -40,23 +40,29 @@
       <div class="flex flex-col">
         <div class="flex items-center mb-3">
           <h1 class="uppercase text-[8px] lg:text-[10px] text-gray-500 mr-3">Size</h1>
-          <h1 title="double-click to edit" v-if="!editingFundSize" class="font-bold text-[10px] lg:text-sm" @dblclick="startEditingFundSize">{{ fundDetails.size }}</h1>
-          <input v-else @keyup.esc="stopEditingFundSize" @keyup.enter="updateFundSize($event.target.value)" 
-            @focusout="stopEditingFundSize"
-            ref="fundSizeUpdateField"
-            class="border border-black p-1 text-xs lg:text-[10px] rounded-lg w-[40px]"
-            :value="fundDetails.size"
-          />
+          <div class="flex space-x-2">
+            <h1 title="double-click to edit" v-if="!editingFundSize" class="font-bold text-[10px] lg:text-sm" @dblclick="startEditingFundSize">{{ fundDetails.size }}</h1>
+            <v-icon v-if="!editingFundSize" class="w-[8px] cursor-pointer" name="fa-pen" @click="startEditingFundSize"/>
+            <input v-else @keyup.esc="stopEditingFundSize" @keyup.enter="updateFundSize($event.target.value)" 
+              @focusout="stopEditingFundSize"
+              ref="fundSizeUpdateField"
+              class="border border-black p-1 text-xs lg:text-[10px] rounded-lg w-[40px]"
+              :value="fundDetails.size"
+            />
+          </div>
         </div>
         <div class="flex items-center">
           <h1 class="uppercase text-[8px] lg:text-[10px] text-gray-500 mr-3">Percentage</h1>
-          <h1 title="double-click to edit" v-if="!editingFundPercentage" @dblclick="startEditingFundPercentage" class="font-bold text-[10px] lg:text-sm">{{ fundDetails.fundPercentage }} %</h1>
-          <input v-else @keyup.esc="stopEditingFundPercentage" @keyup.enter="updateFundPercentage($event.target.value)"
-            @focusout="stopEditingFundPercentage"
-            ref="fundPercentageUpdateField"
-            class="border border-black p-1 text-xs lg:text-[10px] rounded-lg w-[30px]"
-            :value="fundDetails.fundPercentage"
-          />
+          <div class="flex space-x-2">
+            <h1 title="double-click to edit" v-if="!editingFundPercentage" @dblclick="startEditingFundPercentage" class="font-bold text-[10px] lg:text-sm">{{ fundDetails.fundPercentage }} %</h1>
+            <v-icon v-if="!editingFundPercentage" class="w-[8px] cursor-pointer" name="fa-pen" @click="startEditingFundPercentage"/>
+            <input v-else @keyup.esc="stopEditingFundPercentage" @keyup.enter="updateFundPercentage($event.target.value)"
+              @focusout="stopEditingFundPercentage"
+              ref="fundPercentageUpdateField"
+              class="border border-black p-1 text-xs lg:text-[10px] rounded-lg w-[30px]"
+              :value="fundDetails.fundPercentage"
+            />
+          </div>
         </div>
       </div>
     </div> <!-- End of Fund Box -->
@@ -88,6 +94,19 @@
       </div>
     </div><!-- End of Post-Fund Data -->
     
+
+    <!-- Notes Section -->
+    <div class="flex flex-col items-start mt-6">
+      <h1 class="uppercase lg:text-sm text-xs text-gray-500">Notes</h1>
+      <textarea
+        @keyup.enter="updateNotes($event.target.value)"
+        @keyup.esc="$event.target.value = fundDetails.notes"
+        :value="fundDetails.notes"
+        ref="notesUpdateField"
+        class="text-[10px] lg:text-xs p-1 border border-gray-500 min-h-[60px] resize-none rounded-lg w-full"
+        />
+    </div>
+    <!-- End of Notes Section-->
 
     <!-- Transactions History -->
     <h1 class="font-bold self-start mt-6 lg:text-sm text-xs">Transactions History</h1>
@@ -217,10 +236,14 @@ export default {
       })
       this.stopEditingFundPercentage()
     },
-    stopEditingFields() {
-      this.stopEditingFundPercentage()
-      this.stopEditingFundName()
-      this.stopEditingFundSize()
+    updateNotes(value) {
+      FundService.setFundNotes(JSON.stringify({id: this.fund, notes: value})).then((resp) => {
+        console.log('setFundNotes - resp', resp)
+        this.$store.dispatch("getFundDetails", this.fund)
+      })
+      nextTick(() => {
+        this.$refs.notesUpdateField.blur()
+      })
     }
   }
 };
