@@ -42,6 +42,10 @@ const routes = [
         meta: { requiresAuth: true }
       },
       {
+        path: "funds",
+        redirect: { name: 'FundsView' }
+      },
+      {
         path: "fund",
         name: "FundView",
         component: FundView,
@@ -103,5 +107,13 @@ const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
   routes,
 });
+
+router.beforeEach((to, from) => {
+  if(to.meta && to.meta.requiresAuth == true) {
+    if(!localStorage.getItem('access_token')) {
+      router.push('/auth/login')
+    }
+  }
+})
 
 export default router;
