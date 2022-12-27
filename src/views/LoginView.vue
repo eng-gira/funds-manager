@@ -1,5 +1,5 @@
 <template>
-    <form class="w-[400px] flex flex-col mx-auto p-4 mb-6 border border-gray-500 rounded-lg" @submit.prevent="login">
+    <form class="w-[300px] lg:w-[400px] flex flex-col mx-auto p-4 mb-6 border border-gray-500 rounded-lg" @submit.prevent="login">
         <h1 class="font-bold lg:text-xl text-lg mb-3">Login</h1>
         <div class="flex flex-col space-y-2 mb-3">
             <label class="self-start uppercase lg:text-xs text-[10px] text-gray-500 font-bold" for="email">Email</label>
@@ -18,7 +18,7 @@
     <h1 class="mb-3">Don't have an account? <router-link to="/auth/register" class="underline">Register</router-link> instead.</h1>
 </template>
 <script setup>
-import {ref} from 'vue'
+import {ref, onMounted} from 'vue'
 import FundService from '@/services/FundService.js'
 import { useRouter } from 'vue-router'
 
@@ -27,6 +27,10 @@ const router = useRouter()
 let email = ref(null)
 let password = ref(null)
 let error = ref(null)
+
+onMounted(() => {
+    if(localStorage.getItem('access_token')) router.push('/')
+})
 
 function login() {
     if(email.value == null || email.value.length < 5 || password.value == null || password.value.length < 1) {

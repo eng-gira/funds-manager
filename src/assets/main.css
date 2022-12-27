@@ -927,6 +927,10 @@ video {
     width: 500px;
   }
 
+  .lg\:w-\[400px\] {
+    width: 400px;
+  }
+
   .lg\:text-base {
     font-size: 1rem;
     line-height: 1.5rem;
