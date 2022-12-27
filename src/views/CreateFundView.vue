@@ -1,6 +1,6 @@
 <template>
   <form @submit.prevent="submitForm" class="flex flex-col mx-auto w-[300px] lg:w-[500px] border border-gray-500 rounded-lg p-4 mb-6">
-    <h1 class="font-bold lg:text-xl text-lg mb-3">Create a Fund</h1>
+    <h1 class="font-bold lg:text-xl text-lg mb-6">Create a Fund</h1>
     <div class="flex flex-col space-y-2 mb-3">
       <label class="self-start uppercase lg:text-xs text-[10px] text-gray-500 font-bold" for="fund-name">Fund Name</label>
       <input

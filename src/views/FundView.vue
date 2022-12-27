@@ -1,11 +1,11 @@
 <template>
    <div class="flex flex-col p-2 w-[350px] lg:w-[600px] mx-auto">
     <div class="flex justify-between mb-3 items-center">
-      <div class="flex space-x-3">
-        <h1 v-if="!editingFundName" class="font-bold lg:text-lg">
-          {{ fundDetails.fundName }} Fund
+      <div class="flex space-x-1 items-center lg:space-x-3">
+        <h1 v-if="!editingFundName" class="font-bold lg:text-lg text-sm">
+          Fund: {{ fundDetails.fundName }}
         </h1>
-        <v-icon v-if="!editingFundName" class="w-[15px] cursor-pointer" name="fa-pen" @click="startEditingFundName"/>
+        <v-icon v-if="!editingFundName" class="w-[10px] lg:w-[15px] cursor-pointer" name="fa-pen" @click="startEditingFundName"/>
         <input v-else type="text" @keyup.enter="updateFundName($event.target.value)" ref="fundNameUpdateField" 
           @keyup.esc="stopEditingFundName"
           @focusout="stopEditingFundName"
@@ -13,7 +13,7 @@
           :value="fundDetails.fundName"
         />
       </div>
-      <div class="flex space-x-3 lg:text-sm text-xs">
+      <div class="flex space-x-3 lg:text-sm text-[10px]">
         <router-link class="hover:underline" :to="{name: 'DepositFormView', query: {fund: fundDetails.id}}">Deposit</router-link>
         <h1>|</h1>
         <router-link class="hover:underline" :to="{name: 'WithdrawalFormView', query: {fund: fundDetails.id}}">Withdraw</router-link>

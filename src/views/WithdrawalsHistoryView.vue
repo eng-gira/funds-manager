@@ -9,10 +9,10 @@
         <th class="p-2 uppercase font-bold text-gray-500 text-[10px]">Amount</th>
         <th class="p-2 uppercase font-bold text-gray-500 text-[10px]">Notes</th>
       </tr>
-      <tr class="rounded-lg" v-for="withdrawal in withdrawals" :key="withdrawal.id">
-        <td class="p-2 font-bold text-[10px] lg:text-sm">{{ withdrawal.withdrawnFrom }}</td>
-        <td class="p-2 font-bold text-[10px]">{{ withdrawal.withdrawalReason}}</td>
-        <td class="p-2 font-bold text-[10px]">{{ withdrawal.createdOn }}</td>
+      <tr class="" v-for="withdrawal in withdrawals" :key="withdrawal.id">
+        <td class="text-center p-2 font-bold text-[10px] lg:text-sm">{{ withdrawal.withdrawnFrom }}</td>
+        <td class="p-2 font-bold text-[8px] lg:text-[10px]">{{ withdrawal.withdrawalReason}}</td>
+        <td class="p-2 font-bold text-[8px] lg:text-[10px]">{{ withdrawal.createdOn }}</td>
         <td class="p-2 font-bold text-[10px] lg:text-sm">{{ withdrawal.withdrawnAmount }}</td>
         <td class="p-2 text-[10px]">{{ withdrawal.notes  }}</td>
       </tr>

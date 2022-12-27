@@ -14,11 +14,12 @@
             <input id="password" type="password" class="rounded-lg p-2 text-sm lg:text-base font-bold border border-black" v-model="password"/>
         </div>
 
+        <h1 class="mb-3 lg:text-xs text-[10px] text-red-500" v-if="error">{{ error }}</h1>
+
         <button type="submit" class="self-center p-2 bg-blue-900 text-white rounded-lg">Register</button>
 
-        <h1 class="mt-3 lg:text-xs text-[10px] text-red-500" v-if="error">{{ error }}</h1>
+        <h1 class="self-center text-xs lg:text-sm">Already have an account? <router-link to="/auth/login" class="underline">Login</router-link> instead.</h1>
     </form>
-    <h1 class="mb-3">Already have an account? <router-link to="/auth/login" class="underline">Login</router-link> instead.</h1>
 </template>
 <script setup>
 import { ref, onMounted } from 'vue'
@@ -33,7 +34,7 @@ let password = ref(null)
 let error = ref(null)
 
 onMounted(() => {
-    if(localStorage.getItem('access_token')) router.push('/')
+    if(localStorage.getItem('access_token')) localStorage.removeItem('access_token')
 })
 
 function register() {

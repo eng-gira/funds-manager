@@ -1,7 +1,7 @@
 <template>
   <form  @submit.prevent="submitForm"
     class="flex flex-col mx-auto w-[300px] lg:w-[500px] max-w-[500px] border border-gray-500 rounded-lg p-4 mb-6">
-    <h2 class="font-bold lg:text-xl text-lg mb-3 text-green-700">Deposit Funds</h2>
+    <h2 class="font-bold lg:text-xl text-lg mb-6 text-green-700">Deposit Funds</h2>
 
     <div class="flex flex-col space-y-2 mb-3">
       <label class="self-start uppercase lg:text-xs text-[10px] text-gray-500 font-bold" for="deposit-source">Deposit Source</label>

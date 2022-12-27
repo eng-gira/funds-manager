@@ -1,35 +1,16 @@
 <template>
-  <div>
-    <h4 style="display: inline-block; margin-left: 10px">
-      <router-link
-        style="text-decoration: none"
-        :to="{ name: 'DepositsHistoryView'}"
-        >Deposits History
+  <div class="flex flex-col w-[350px] lg:w-[650px] mx-auto">
+    <div class="flex items-center mb-3">
+      <h1 class="lg:text-lg font-bold mr-3">Funds</h1>
+      <router-link :to="{name: 'CreateFundView'}">
+        <v-icon name="io-add-circle-outline" class="w-[20px]"/>
       </router-link>
-    </h4>
-    <h4 style="display: inline-block; margin-left: 10px">
-      <router-link
-        :to="{ name: 'WithdrawalsHistoryView'}"
-        style="text-decoration: none"
-        >Withdrawals History
-      </router-link>
-    </h4>
-    <h4 style="display: inline-block; margin-left: 10px">
-      <router-link to="/fund/create" style="text-decoration: none">
-        Create a Fund
-      </router-link>
-    </h4>
-    <h4 style="display: inline-block; margin-left: 10px">
-      <router-link to="/deposit" style="text-decoration: none">
-        Deposit Funds
-      </router-link>
-    </h4>
-  </div>
-  <h3>Total Balance: {{ totalBalance }}</h3>
-  <br />
+    </div>
+    <h1 class="lg:text-base text-sm mb-6 self-center">Total Balance: <strong>{{ totalBalance }}</strong></h1>
 
-  <div v-if="funds !== null && funds.length > 0">
-    <FundCard v-for="fund in funds" :key="fund.id" :fund="fund" class="flex flex-col mx-auto"/>
+    <div class="mx-auto" v-if="funds !== null && funds.length > 0">
+      <FundCard v-for="fund in funds" :key="fund.id" :fund="fund" class=""/>
+    </div>
   </div>
 </template>
 
