@@ -128,7 +128,7 @@ export default {
         notes: this.notes,
       };
       FundService.deposit(JSON.stringify(deposit)).then(() => {
-        this.$router.push("/funds");
+        this.$router.push("/");
       });
     },
   },

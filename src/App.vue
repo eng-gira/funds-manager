@@ -1,12 +1,8 @@
 <template>
-  <div class="mx-auto">
-    <div class="flex mx-auto mt-6 space-x-3">
-      <router-link to="/funds">Funds</router-link>
-      <router-link to="/about">About</router-link>
-      <h1 @click="logout" class="hover:underline cursor-pointer">Logout</h1>
-    </div>
+  <div class="p-8">
+    <h1 class="flex justify-start mb-12 font-bold lg:text-xl text-lg">Funds Manager</h1>
+    <router-view />
   </div>
-  <router-view/>
 </template>
 <script setup>
 import { useRouter } from 'vue-router'

@@ -9,64 +9,84 @@ import CreateFundView from "@/views/CreateFundView.vue"
 import NotFoundView from "@/views/NotFoundView.vue"
 import LoginView from "@/views/LoginView.vue"
 import RegisterView from "@/views/RegisterView.vue"
+import AppLayout from '@/views/layouts/AppLayout.vue'
+import AuthLayout from '@/views/layouts/AuthLayout.vue'
 
 const routes = [
   {
-    path: "/funds",
-    name: "FundsView",
-    component: FundsView,
-  },
-  {
-    path: "/fund",
-    name: "FundView",
-    component: FundView,
-    props: (route) => ({ fund: parseInt(route.query.fund) }),
-  },
-  {
-    path: "/deposits-history",
-    name: "DepositsHistoryView",
-    component: DepositsHistoryView,
-  },
-  {
-    path: "/withdrawals-history",
-    name: "WithdrawalsHistoryView",
-    component: WithdrawalsHistoryView,
-  },
-  {
-    path: "/withdraw",
-    name: "WithdrawalFormView",
-    component: WithdrawalFormView,
-    props: (route) => ({ fund: parseInt(route.query.fund) }),
-  },
-  {
-    path: "/deposit",
-    name: "DepositFormView",
-    component: DepositFormView,
-    props: (route) => ({ fund: route.query.fund }),
-  },
-  {
-    path: "/fund/create",
-    name: "CreateFundView",
-    component: CreateFundView,
+    path: '/auth',
+    name: 'AuthLayout',
+    component: AuthLayout,
+    children: [
+      {
+        path: 'login',
+        name: 'LoginView',
+        component: LoginView
+      },
+      {
+        path: 'register',
+        name: 'RegisterView',
+        component: RegisterView
+      },
+    ]
   },
   {
     path: "/",
-    redirect: { name: "Funds" },
+    name: 'AppLayout',
+    component: AppLayout,
+    children: [
+      {
+        path: "",
+        name: "FundsView",
+        component: FundsView,
+        meta: { requiresAuth: true }
+      },
+      {
+        path: "fund",
+        name: "FundView",
+        component: FundView,
+        meta: { requiresAuth: true },
+        props: (route) => ({ fund: parseInt(route.query.fund) }),
+      },
+      {
+        path: "deposits-history",
+        name: "DepositsHistoryView",
+        component: DepositsHistoryView,
+        meta: { requiresAuth: true },
+      },
+      {
+        path: "withdrawals-history",
+        name: "WithdrawalsHistoryView",
+        component: WithdrawalsHistoryView,
+        meta: { requiresAuth: true },
+      },
+      {
+        path: "withdraw",
+        name: "WithdrawalFormView",
+        component: WithdrawalFormView,
+        meta: { requiresAuth: true },
+        props: (route) => ({ fund: parseInt(route.query.fund) }),
+      },
+      {
+        path: "deposit",
+        name: "DepositFormView",
+        component: DepositFormView,
+        meta: { requiresAuth: true },
+        props: (route) => ({ fund: route.query.fund }),
+      },
+      {
+        path: "fund/create",
+        name: "CreateFundView",
+        component: CreateFundView,
+        meta: { requiresAuth: true },
+      },
+
+    ]
   },
   {
     path: "/:catchAll(.*)",
     name: "NotFoundView",
     component: NotFoundView,
-  },
-  {
-    path: '/login',
-    name: 'LoginView',
-    component: LoginView
-  },
-  {
-    path: '/register',
-    name: 'RegisterView',
-    component: RegisterView
   },
   {
     path: "/about",

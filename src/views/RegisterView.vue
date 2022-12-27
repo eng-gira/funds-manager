@@ -18,7 +18,7 @@
 
         <h1 class="mt-3 lg:text-xs text-[10px] text-red-500" v-if="error">{{ error }}</h1>
     </form>
-    <h1 class="mb-3">Already have an account? <router-link to="/login" class="underline">Login</router-link> instead.</h1>
+    <h1 class="mb-3">Already have an account? <router-link to="/auth/login" class="underline">Login</router-link> instead.</h1>
 </template>
 <script setup>
 import {ref} from 'vue'
@@ -44,7 +44,7 @@ function register() {
         if(resp.data.message != 'failed') {
             console.log(resp.data.data)
             localStorage.setItem('access_token', resp.data.data)
-            router.push('/funds')
+            router.push('/')
         } else {
             error.value = resp.data.data
         }
