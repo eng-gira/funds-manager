@@ -12,7 +12,7 @@
       <tr class="" v-for="withdrawal in withdrawals" :key="withdrawal.id">
         <td class="text-center p-2 font-bold text-[10px] lg:text-sm">{{ withdrawal.withdrawnFrom }}</td>
         <td class="text-center p-2 font-bold text-[8px] lg:text-[10px]">{{ withdrawal.withdrawalReason}}</td>
-        <td class="text-center font-bold text-[7px] lg:text-[10px]">{{ withdrawal.createdOn }}</td>
+        <td class="text-center font-bold text-[7px] lg:text-[10px]">{{ formatLaravelTimeStamp(withdrawal.created_at) }}</td>
         <td class="text-center p-2 font-bold text-[10px] lg:text-sm">{{ withdrawal.withdrawnAmount }}</td>
         <td class="text-center p-2 text-[10px]">{{ withdrawal.notes  }}</td>
       </tr>
@@ -20,6 +20,8 @@
   </div>
 </template>
 <script>
+import { formatLaravelTimeStamp } from '@/utils.js'
+
 export default {
   name: "WithdrawalsHistoryView",
   created() {
