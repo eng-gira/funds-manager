@@ -12,7 +12,7 @@
       <tr class="" v-for="deposit in deposits" :key="deposit.id">
         <td class="p-2 text-center font-bold text-[10px] lg:text-sm">{{ deposit.depositSource }}</td>
         <td class="p-2 text-center font-bold text-[10px] lg:text-sm">{{ deposit.depositedTo }}</td>
-        <td class="text-center font-bold text-[7px] lg:text-[10px]">{{ formatLaravelTimeStamp(deposit.created_at) }}</td>
+        <td class="text-center font-bold text-[7px] lg:text-[10px]">{{ deposit.created_at }}</td>
         <td class="p-2 text-center font-bold text-[10px] lg:text-sm">{{ deposit.depositedAmount }}</td>
         <td class="p-2 text-center text-[10px]">{{ deposit.notes }}</td>
       </tr>
@@ -20,7 +20,6 @@
   </div>
 </template>
 <script>
-import { formatLaravelTimeStamp } from '@/utils.js'
 
 export default {
 name: "DepositsTable",
@@ -29,14 +28,8 @@ created() {
 },
 computed: {
   deposits() {
-    console.log(formatLaravelTimeStamp(this.$store.state.depostis[0].created_at))
     return this.$store.state.deposits; // all funds' deposits.
   },
 },
-methods: {
-  formatLaravelTimeStamp(tS) {
-    return formatLaravelTimeStamp(tS)
-  }
-}
 };
 </script>
