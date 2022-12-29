@@ -1,12 +1,12 @@
 import axios from "axios"
 
 const apiClient = axios.create({
-  baseURL: "http://localhost:8000/api/fund",
+  baseURL: "https://funds-manager.onrender.com/api/fund",
   withCredentials: false,
 })
 
 const authClient = axios.create({
-  baseURL: 'http://localhost:8000/api/auth',
+  baseURL: 'https://funds-manager.onrender.com/api/auth',
   withCredentials: false,
 })
 
