@@ -58,6 +58,7 @@ export default {
         if (!!value == false) {
           return "The name field is required.";
         }
+        if(store.state.funds != null) return true
         let fundsNames = store.state.funds.map((fund) => fund.fundName);
         if (fundsNames.includes(value)) return "This name already exists.";
         return true;

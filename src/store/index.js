@@ -43,7 +43,7 @@ export default createStore({
   },
   actions: {
     getFunds({ commit }) {
-      FundService.getFunds().then((response) => {
+      return FundService.getFunds().then((response) => {
         commit("GET_FUNDS", response.data.data);
       });
     },
