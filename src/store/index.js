@@ -42,34 +42,34 @@ export default createStore({
     },
   },
   actions: {
-    async getFunds({ commit }) {
-      await FundService.getFunds().then((response) => {
-        commit("GET_FUNDS", response.data);
+    getFunds({ commit }) {
+      FundService.getFunds().then((response) => {
+        commit("GET_FUNDS", response.data.data);
       });
     },
     getFundDetails({ commit }, id) {
       FundService.getFund(id).then((response) => {
-        commit("GET_FUND_DETAILS", response.data);
+        commit("GET_FUND_DETAILS", response.data.data);
       });
     },
     getDepositsHistory({ commit }) {
       FundService.getDepositsHistory().then((response) => {
-        commit("GET_DEPOSITS_HISTORY", response.data);
+        commit("GET_DEPOSITS_HISTORY", response.data.data);
       });
     },
     getWithdrawalsHistory({ commit }) {
       FundService.getWithdrawalsHistory().then((response) => {
-        commit("GET_WITHDRAWALS_HISTORY", response.data);
+        commit("GET_WITHDRAWALS_HISTORY", response.data.data);
       });
     },
     getDepositsForFund({ commit }, id) {
       FundService.getDepositsHistoryForFund(id).then((response) => {
-        commit("GET_FUND_DEPOSITS", response.data);
+        commit("GET_FUND_DEPOSITS", response.data.data);
       });
     },
     getWithdrawalsForFund({ commit }, id) {
       FundService.getWithdrawalsHistoryForFund(id).then((response) => {
-        commit("GET_FUND_WITHDRAWALS", response.data);
+        commit("GET_FUND_WITHDRAWALS", response.data.data);
       });
     },
     storeFund({ commit }, fund) {

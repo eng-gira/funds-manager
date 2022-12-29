@@ -28,17 +28,17 @@ export default {
   },
   computed: {
     funds() {
-      return this.$store.state.funds;
+      return this.$store.state.funds
     },
     totalBalance() {
       if(!this.funds) return 0
       
-      let funds = this.funds;
-      let total = 0;
+      let funds = this.funds
+      let total = 0
       for (let i = 0; i < funds.length; i++) {
-        total += funds[i].balance;
+        total += funds[i].balance
       }
-      return total;
+      return total
     },
   },
   components: {
