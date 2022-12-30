@@ -1,12 +1,12 @@
 import axios from "axios"
 
 const apiClient = axios.create({
-  baseURL: "206.189.196.40/funds-manager/api/fund",
+  baseURL: process.env.VUE_APP_API_URL,
   withCredentials: false,
 })
 
 const authClient = axios.create({
-  baseURL: '206.189.196.40/funds-manager/api/auth',
+  baseURL: process.env.VUE_APP_AUTH_URL,
   withCredentials: false,
 })
 
