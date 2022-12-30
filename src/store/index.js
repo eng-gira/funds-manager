@@ -44,32 +44,33 @@ export default createStore({
   actions: {
     getFunds({ commit }) {
       return FundService.getFunds().then((response) => {
-        commit("GET_FUNDS", response.data.data);
+        console.log('rcvd funds', response.data)
+        commit("GET_FUNDS", response.data);
       });
     },
     getFundDetails({ commit }, id) {
       FundService.getFund(id).then((response) => {
-        commit("GET_FUND_DETAILS", response.data.data);
+        commit("GET_FUND_DETAILS", response.data);
       });
     },
     getDepositsHistory({ commit }) {
       FundService.getDepositsHistory().then((response) => {
-        commit("GET_DEPOSITS_HISTORY", response.data.data);
+        commit("GET_DEPOSITS_HISTORY", response.data);
       });
     },
     getWithdrawalsHistory({ commit }) {
       FundService.getWithdrawalsHistory().then((response) => {
-        commit("GET_WITHDRAWALS_HISTORY", response.data.data);
+        commit("GET_WITHDRAWALS_HISTORY", response.data);
       });
     },
     getDepositsForFund({ commit }, id) {
       FundService.getDepositsHistoryForFund(id).then((response) => {
-        commit("GET_FUND_DEPOSITS", response.data.data);
+        commit("GET_FUND_DEPOSITS", response.data);
       });
     },
     getWithdrawalsForFund({ commit }, id) {
       FundService.getWithdrawalsHistoryForFund(id).then((response) => {
-        commit("GET_FUND_WITHDRAWALS", response.data.data);
+        commit("GET_FUND_WITHDRAWALS", response.data);
       });
     },
     storeFund({ commit }, fund) {

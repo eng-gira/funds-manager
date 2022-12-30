@@ -28,11 +28,12 @@ export default {
   },
   computed: {
     funds() {
+      console.log(this.$store.state.funds)
       return this.$store.state.funds
     },
     totalBalance() {
       if(!this.funds) return 0
-      
+      console.log(this.funds, this.funds, this.funds, this.funds)
       let funds = this.funds
       let total = 0
       for (let i = 0; i < funds.length; i++) {

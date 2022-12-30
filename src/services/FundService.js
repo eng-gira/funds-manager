@@ -1,12 +1,12 @@
 import axios from "axios"
 
 const apiClient = axios.create({
-  baseURL: process.env.VUE_APP_API_URL,
+  baseURL: process.env.NODE_ENV === 'production' ? process.env.VUE_APP_API_URL_PROD : process.env.VUE_APP_API_URL,
   withCredentials: false,
 })
 
 const authClient = axios.create({
-  baseURL: process.env.VUE_APP_AUTH_URL,
+  baseURL: process.env.NODE_ENV === 'production' ? process.env.VUE_APP_AUTH_URL_PROD : process.env.VUE_APP_AUTH_URL,
   withCredentials: false,
 })
 
