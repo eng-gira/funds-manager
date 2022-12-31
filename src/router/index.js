@@ -11,6 +11,7 @@ import LoginView from "@/views/LoginView.vue"
 import RegisterView from "@/views/RegisterView.vue"
 import AppLayout from '@/views/layouts/AppLayout.vue'
 import AuthLayout from '@/views/layouts/AuthLayout.vue'
+import { publicPath } from '../vue.config'
 
 const routes = [
   {
@@ -106,6 +107,7 @@ const routes = [
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
   routes,
+  base: publicPath,
 });
 
 router.beforeEach((to, from) => {
