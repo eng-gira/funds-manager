@@ -107,8 +107,8 @@ const routes = [
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
   routes,
-  base: publicPath,
-});
+  base: publicPath
+})
 
 router.beforeEach((to, from) => {
   if(to.meta && to.meta.requiresAuth == true) {
