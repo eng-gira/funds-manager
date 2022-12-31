@@ -73,11 +73,11 @@
       <div class="flex flex-col space-y-3">
         <div class="flex items-center">
           <h1 class="uppercase lg:text-[10px] text-[8px] text-gray-500 mr-3">Created</h1>
-          <h1 class="font-bold text-[8px] lg:text-sm">{{ fundDetails.created_at }}</h1>
+          <h1 class="font-bold text-[8px] lg:text-sm">{{ fundDetails.createdOn }}</h1>
         </div>
         <div class="flex items-center">
           <h1 class="uppercase lg:text-[10px] text-[8px] text-gray-500 mr-3">Last Modified</h1>
-          <h1 class="font-bold text-[8px] lg:text-sm">{{ fundDetails.updated_at }}</h1>
+          <h1 class="font-bold text-[8px] lg:text-sm">{{ fundDetails.updatedOn }}</h1>
         </div>
       </div>
 
@@ -121,7 +121,7 @@
       </tr>
       <tr class="rounded-lg" v-for="deposit in deposits" :key="deposit.id">
         <td class="p-2 font-bold text-[10px] lg:text-sm">{{ deposit.depositSource }}</td>
-        <td class="p-2 font-bold text-[10px]">{{ deposit.created_at }}</td>
+        <td class="p-2 font-bold text-[10px]">{{ deposit.createdOn }}</td>
         <td class="p-2 font-bold text-[10px] lg:text-sm">{{ deposit.depositedAmount }}</td>
         <td class="p-2 text-[10px]">{{ deposit.notes }}</td>
       </tr>
@@ -137,7 +137,7 @@
       </tr>
       <tr class="rounded-lg" v-for="withdrawal in withdrawals" :key="withdrawal.id">
         <td class="p-2 font-bold text-[10px]">{{ withdrawal.withdrawalReason}}</td>
-        <td class="p-2 font-bold text-[10px]">{{ withdrawal.created_at }}</td>
+        <td class="p-2 font-bold text-[10px]">{{ withdrawal.createdOn }}</td>
         <td class="p-2 font-bold text-[10px] lg:text-sm">{{ withdrawal.withdrawnAmount }}</td>
         <td class="p-2 text-[10px]">{{ withdrawal.notes  }}</td>
       </tr>
