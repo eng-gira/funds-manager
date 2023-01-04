@@ -24,4 +24,4 @@ Run `npm install`
 Run `npm run serve`
 
 ### Link
-You can visit it at https://funds-manager.onrender.com
+Click [here](http://206.189.196.40/funds-manager/) to visit it.
