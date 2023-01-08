@@ -120,10 +120,10 @@
         <th class="p-2 uppercase font-bold text-gray-500 lg:text-[10px] text-[8px]">Notes</th>
       </tr>
       <tr class="rounded-lg" v-for="deposit in deposits" :key="deposit.id">
-        <td class="p-2 font-bold text-[10px] lg:text-sm">{{ deposit.depositSource }}</td>
-        <td class="p-2 font-bold text-[10px]">{{ deposit.createdOn }}</td>
-        <td class="p-2 font-bold text-[10px] lg:text-sm">{{ deposit.depositedAmount }}</td>
-        <td class="p-2 text-[10px]">{{ deposit.notes }}</td>
+        <td class="text-center p-2 font-bold text-[10px] lg:text-sm">{{ deposit.depositSource }}</td>
+        <td class="text-center p-2 font-bold text-[10px]">{{ deposit.createdOn }}</td>
+        <td class="text-center p-2 font-bold text-[10px] lg:text-sm">{{ deposit.depositedAmount }}</td>
+        <td class="text-center p-2 text-[10px]">{{ deposit.notes }}</td>
       </tr>
     </table>
 
@@ -136,10 +136,10 @@
         <th class="p-2 uppercase font-bold text-gray-500 lg:text-[10px] text-[8px]">Notes</th>
       </tr>
       <tr class="rounded-lg" v-for="withdrawal in withdrawals" :key="withdrawal.id">
-        <td class="p-2 font-bold text-[10px]">{{ withdrawal.withdrawalReason}}</td>
-        <td class="p-2 font-bold text-[10px]">{{ withdrawal.createdOn }}</td>
-        <td class="p-2 font-bold text-[10px] lg:text-sm">{{ withdrawal.withdrawnAmount }}</td>
-        <td class="p-2 text-[10px]">{{ withdrawal.notes  }}</td>
+        <td class="text-center p-2 font-bold text-[10px]">{{ withdrawal.withdrawalReason}}</td>
+        <td class="text-center p-2 font-bold text-[10px]">{{ withdrawal.createdOn }}</td>
+        <td class="text-center p-2 font-bold text-[10px] lg:text-sm">{{ withdrawal.withdrawnAmount }}</td>
+        <td class="text-center p-2 text-[10px]">{{ withdrawal.notes  }}</td>
       </tr>
     </table>
 
